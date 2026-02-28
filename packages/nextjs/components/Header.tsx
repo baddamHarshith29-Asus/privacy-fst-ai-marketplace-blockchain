@@ -30,6 +30,38 @@ export const menuLinks: HeaderMenuLink[] = [
 export const HeaderMenuLinks = () => {
   const pathname = usePathname();
 
+  const menuLinks = [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Marketplace",
+      href: "/marketplace",
+    },
+    {
+      label: "Upload Data",
+      href: "/upload",
+    },
+    {
+      label: "Training Lab",
+      href: "/ai-training",
+    },
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
+    {
+      label: "Analytics",
+      href: "/analytics",
+    },
+    {
+      label: "Debug Contracts",
+      href: "/debug",
+      icon: <BugAntIcon className="h-4 w-4" />,
+    },
+  ];
+
   return (
     <>
       {menuLinks.map(({ label, href, icon }) => {

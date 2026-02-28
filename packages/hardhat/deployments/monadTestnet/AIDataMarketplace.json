@@ -1,0 +1,1335 @@
+{
+  "address": "0x319f9d6796aA5BEb249B5788Cb72029224BD5478",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_accessManager",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_royaltyManager",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "EnforcedPause",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ExpectedPause",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ReentrancyGuardReentrantCall",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "DatasetDeactivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "DatasetPurchased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsCID",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "category",
+          "type": "string"
+        }
+      ],
+      "name": "DatasetRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "EarningsWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "PriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "trainer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "accuracy",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "modelHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "TrainingSessionRecorded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "accessManager",
+      "outputs": [
+        {
+          "internalType": "contract AccessManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "deactivateDataset",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getActiveDatasets",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllDatasetIds",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDataset",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "ipfsCID",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "encryptedKeyHash",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isActive",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalSales",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalRevenue",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "category",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lastUpdatedAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "trainingSessionCount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct DatasetLib.Dataset",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDatasetCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        }
+      ],
+      "name": "getPendingEarnings",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPlatformStats",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetCount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "volume",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "transactions",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "trainingSessions",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        }
+      ],
+      "name": "getProviderDatasets",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "buyer",
+          "type": "address"
+        }
+      ],
+      "name": "getPurchaseRecord",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "datasetId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "pricePaid",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct DatasetLib.PurchaseRecord",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTrainingSessions",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "datasetId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "trainer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "accuracy",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "modelHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct DatasetLib.TrainingSession[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "hasAccess",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchaseDataset",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accuracy",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "modelHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "recordTrainingSession",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "ipfsCID",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "encryptedKeyHash",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "category",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "name": "registerDataset",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "royaltyManager",
+      "outputs": [
+        {
+          "internalType": "contract RoyaltyManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalTrainingSessions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalTransactions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalVolume",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "newPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "updatePrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawEarnings",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x185e75d1587d570b188844b1a8d1a611bccc475e3a9134a15c1942585dd2a390",
+  "receipt": {
+    "to": null,
+    "from": "0x9477267ccfDC6dAb9B0Df72D9238F1C5F64AbcD7",
+    "contractAddress": "0x319f9d6796aA5BEb249B5788Cb72029224BD5478",
+    "transactionIndex": 1,
+    "gasUsed": "2235332",
+    "logsBloom": "0x00000000000000000000000000000000000040000000000000800000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000001000000000000000000400000000000000000008000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8fbebea29f3560aa0a26aa341b3169c6fd0ea9c7b385ec6056579740a2cf8695",
+    "transactionHash": "0x185e75d1587d570b188844b1a8d1a611bccc475e3a9134a15c1942585dd2a390",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 15748267,
+        "transactionHash": "0x185e75d1587d570b188844b1a8d1a611bccc475e3a9134a15c1942585dd2a390",
+        "address": "0x319f9d6796aA5BEb249B5788Cb72029224BD5478",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000009477267ccfdc6dab9b0df72d9238f1c5f64abcd7"
+        ],
+        "data": "0x",
+        "logIndex": 1,
+        "blockHash": "0x8fbebea29f3560aa0a26aa341b3169c6fd0ea9c7b385ec6056579740a2cf8695"
+      }
+    ],
+    "blockNumber": 15748267,
+    "cumulativeGasUsed": "2235332",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x673a7785452781E092dA8474CA8e21c285d79094",
+    "0xc19f947C383eBfDA2ab76b940Ea1538F219e6755"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "7b6a1b19683268292cda310fe0b75767",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_accessManager\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_royaltyManager\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"EnforcedPause\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExpectedPause\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ReentrancyGuardReentrantCall\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"DatasetDeactivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"DatasetPurchased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"ipfsCID\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"category\",\"type\":\"string\"}],\"name\":\"DatasetRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"EarningsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newPrice\",\"type\":\"uint256\"}],\"name\":\"PriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"trainer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"accuracy\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"modelHash\",\"type\":\"bytes32\"}],\"name\":\"TrainingSessionRecorded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"accessManager\",\"outputs\":[{\"internalType\":\"contract AccessManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"deactivateDataset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getActiveDatasets\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllDatasetIds\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"getDataset\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"ipfsCID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"encryptedKeyHash\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isActive\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"totalSales\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalRevenue\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"category\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"createdAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastUpdatedAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"trainingSessionCount\",\"type\":\"uint256\"}],\"internalType\":\"struct DatasetLib.Dataset\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDatasetCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"getPendingEarnings\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPlatformStats\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"volume\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"transactions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"trainingSessions\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"getProviderDatasets\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"}],\"name\":\"getPurchaseRecord\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"pricePaid\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct DatasetLib.PurchaseRecord\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"getTrainingSessions\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"trainer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"accuracy\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"modelHash\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct DatasetLib.TrainingSession[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"hasAccess\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"purchaseDataset\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"accuracy\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"modelHash\",\"type\":\"bytes32\"}],\"name\":\"recordTrainingSession\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"ipfsCID\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"encryptedKeyHash\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"category\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"registerDataset\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"royaltyManager\",\"outputs\":[{\"internalType\":\"contract RoyaltyManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalTrainingSessions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalTransactions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalVolume\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newPrice\",\"type\":\"uint256\"}],\"name\":\"updatePrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawEarnings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Core AI Data Marketplace contract deployed on Monad.      Enables privacy-preserving AI dataset transactions with:      - IPFS-based encrypted storage (CID on-chain only)      - MON token payments      - 2% platform fee, 98% to providers      - On-chain training session proofs      - Access control via AccessManager      - Royalty distribution via RoyaltyManager\",\"errors\":{\"EnforcedPause()\":[{\"details\":\"The operation failed because the contract is paused.\"}],\"ExpectedPause()\":[{\"details\":\"The operation failed because the contract is not paused.\"}],\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}],\"ReentrancyGuardReentrantCall()\":[{\"details\":\"Unauthorized reentrant call.\"}]},\"events\":{\"Paused(address)\":{\"details\":\"Emitted when the pause is triggered by `account`.\"},\"Unpaused(address)\":{\"details\":\"Emitted when the pause is lifted by `account`.\"}},\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"paused()\":{\"details\":\"Returns true if the contract is paused, and false otherwise.\"},\"purchaseDataset(uint256)\":{\"params\":{\"datasetId\":\"ID of the dataset to purchase\"}},\"recordTrainingSession(uint256,uint256,bytes32)\":{\"params\":{\"accuracy\":\"Model accuracy * 100 (e.g., 9523 = 95.23%)\",\"datasetId\":\"Dataset used for training\",\"modelHash\":\"Keccak256 hash of the trained model\"}},\"registerDataset(string,string,uint256,string,string)\":{\"params\":{\"category\":\"Dataset category (CV, NLP, Audio, Tabular, Multimodal, etc.)\",\"description\":\"Human-readable description\",\"encryptedKeyHash\":\"Hash of the encryption key (key itself never on-chain)\",\"ipfsCID\":\"IPFS CID of the encrypted dataset\",\"price\":\"Price in wei (MON tokens)\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"title\":\"AIDataMarketplace\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"deactivateDataset(uint256)\":{\"notice\":\"Deactivate a dataset (by owner or contract owner)\"},\"purchaseDataset(uint256)\":{\"notice\":\"Purchase access to a dataset (pay in MON)\"},\"recordTrainingSession(uint256,uint256,bytes32)\":{\"notice\":\"Record a training session with proof of training\"},\"registerDataset(string,string,uint256,string,string)\":{\"notice\":\"Register a new encrypted AI dataset on Monad\"},\"updatePrice(uint256,uint256)\":{\"notice\":\"Update dataset price (by owner only)\"},\"withdrawEarnings()\":{\"notice\":\"Provider withdraws accumulated earnings from RoyaltyManager\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/AIDataMarketplace.sol\":\"AIDataMarketplace\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Pausable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/Pausable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which allows children to implement an emergency stop\\n * mechanism that can be triggered by an authorized account.\\n *\\n * This module is used through inheritance. It will make available the\\n * modifiers `whenNotPaused` and `whenPaused`, which can be applied to\\n * the functions of your contract. Note that they will not be pausable by\\n * simply including this module, only once the modifiers are put in place.\\n */\\nabstract contract Pausable is Context {\\n    bool private _paused;\\n\\n    /**\\n     * @dev Emitted when the pause is triggered by `account`.\\n     */\\n    event Paused(address account);\\n\\n    /**\\n     * @dev Emitted when the pause is lifted by `account`.\\n     */\\n    event Unpaused(address account);\\n\\n    /**\\n     * @dev The operation failed because the contract is paused.\\n     */\\n    error EnforcedPause();\\n\\n    /**\\n     * @dev The operation failed because the contract is not paused.\\n     */\\n    error ExpectedPause();\\n\\n    /**\\n     * @dev Initializes the contract in unpaused state.\\n     */\\n    constructor() {\\n        _paused = false;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is not paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    modifier whenNotPaused() {\\n        _requireNotPaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    modifier whenPaused() {\\n        _requirePaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns true if the contract is paused, and false otherwise.\\n     */\\n    function paused() public view virtual returns (bool) {\\n        return _paused;\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is paused.\\n     */\\n    function _requireNotPaused() internal view virtual {\\n        if (paused()) {\\n            revert EnforcedPause();\\n        }\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is not paused.\\n     */\\n    function _requirePaused() internal view virtual {\\n        if (!paused()) {\\n            revert ExpectedPause();\\n        }\\n    }\\n\\n    /**\\n     * @dev Triggers stopped state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    function _pause() internal virtual whenNotPaused {\\n        _paused = true;\\n        emit Paused(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Returns to normal state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    function _unpause() internal virtual whenPaused {\\n        _paused = false;\\n        emit Unpaused(_msgSender());\\n    }\\n}\\n\",\"keccak256\":\"0xb2e5f50762c27fb4b123e3619c3c02bdcba5e515309382e5bfb6f7d6486510bd\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/ReentrancyGuard.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Contract module that helps prevent reentrant calls to a function.\\n *\\n * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier\\n * available, which can be applied to functions to make sure there are no nested\\n * (reentrant) calls to them.\\n *\\n * Note that because there is a single `nonReentrant` guard, functions marked as\\n * `nonReentrant` may not call one another. This can be worked around by making\\n * those functions `private`, and then adding `external` `nonReentrant` entry\\n * points to them.\\n *\\n * TIP: If you would like to learn more about reentrancy and alternative ways\\n * to protect against it, check out our blog post\\n * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].\\n */\\nabstract contract ReentrancyGuard {\\n    // Booleans are more expensive than uint256 or any type that takes up a full\\n    // word because each write operation emits an extra SLOAD to first read the\\n    // slot's contents, replace the bits taken up by the boolean, and then write\\n    // back. This is the compiler's defense against contract upgrades and\\n    // pointer aliasing, and it cannot be disabled.\\n\\n    // The values being non-zero value makes deployment a bit more expensive,\\n    // but in exchange the refund on every call to nonReentrant will be lower in\\n    // amount. Since refunds are capped to a percentage of the total\\n    // transaction's gas, it is best to keep them low in cases like this one, to\\n    // increase the likelihood of the full refund coming into effect.\\n    uint256 private constant NOT_ENTERED = 1;\\n    uint256 private constant ENTERED = 2;\\n\\n    uint256 private _status;\\n\\n    /**\\n     * @dev Unauthorized reentrant call.\\n     */\\n    error ReentrancyGuardReentrantCall();\\n\\n    constructor() {\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Prevents a contract from calling itself, directly or indirectly.\\n     * Calling a `nonReentrant` function from another `nonReentrant`\\n     * function is not supported. It is possible to prevent this from happening\\n     * by making the `nonReentrant` function external, and making it call a\\n     * `private` function that does the actual work.\\n     */\\n    modifier nonReentrant() {\\n        _nonReentrantBefore();\\n        _;\\n        _nonReentrantAfter();\\n    }\\n\\n    function _nonReentrantBefore() private {\\n        // On the first call to nonReentrant, _status will be NOT_ENTERED\\n        if (_status == ENTERED) {\\n            revert ReentrancyGuardReentrantCall();\\n        }\\n\\n        // Any calls to nonReentrant after this point will fail\\n        _status = ENTERED;\\n    }\\n\\n    function _nonReentrantAfter() private {\\n        // By storing the original value once again, a refund is triggered (see\\n        // https://eips.ethereum.org/EIPS/eip-2200)\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Returns true if the reentrancy guard is currently set to \\\"entered\\\", which indicates there is a\\n     * `nonReentrant` function in the call stack.\\n     */\\n    function _reentrancyGuardEntered() internal view returns (bool) {\\n        return _status == ENTERED;\\n    }\\n}\\n\",\"keccak256\":\"0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236\",\"license\":\"MIT\"},\"contracts/AIDataMarketplace.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/utils/Pausable.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\\\";\\r\\nimport \\\"./interfaces/IMarketplace.sol\\\";\\r\\nimport \\\"./libraries/DatasetLib.sol\\\";\\r\\nimport \\\"./AccessManager.sol\\\";\\r\\nimport \\\"./RoyaltyManager.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title AIDataMarketplace\\r\\n * @dev Core AI Data Marketplace contract deployed on Monad.\\r\\n *      Enables privacy-preserving AI dataset transactions with:\\r\\n *      - IPFS-based encrypted storage (CID on-chain only)\\r\\n *      - MON token payments\\r\\n *      - 2% platform fee, 98% to providers\\r\\n *      - On-chain training session proofs\\r\\n *      - Access control via AccessManager\\r\\n *      - Royalty distribution via RoyaltyManager\\r\\n */\\r\\ncontract AIDataMarketplace is IMarketplace, Ownable, Pausable, ReentrancyGuard {\\r\\n    using DatasetLib for DatasetLib.Dataset;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 State Variables \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    AccessManager public accessManager;\\r\\n    RoyaltyManager public royaltyManager;\\r\\n\\r\\n    uint256 private _datasetCounter;\\r\\n\\r\\n    // datasetId => Dataset\\r\\n    mapping(uint256 => DatasetLib.Dataset) private _datasets;\\r\\n\\r\\n    // provider => list of dataset IDs they own\\r\\n    mapping(address => uint256[]) private _providerDatasets;\\r\\n\\r\\n    // datasetId => TrainingSession[]\\r\\n    mapping(uint256 => DatasetLib.TrainingSession[]) private _trainingSessions;\\r\\n\\r\\n    // datasetId => buyer => purchase record\\r\\n    mapping(uint256 => mapping(address => DatasetLib.PurchaseRecord)) private _purchases;\\r\\n\\r\\n    // All dataset IDs (for enumeration)\\r\\n    uint256[] private _allDatasetIds;\\r\\n\\r\\n    // Total platform statistics\\r\\n    uint256 public totalVolume;\\r\\n    uint256 public totalTransactions;\\r\\n    uint256 public totalTrainingSessions;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constructor \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    constructor(address _accessManager, address _royaltyManager) Ownable(msg.sender) {\\r\\n        require(_accessManager != address(0), \\\"AIDataMarketplace: zero access manager\\\");\\r\\n        require(_royaltyManager != address(0), \\\"AIDataMarketplace: zero royalty manager\\\");\\r\\n        accessManager = AccessManager(_accessManager);\\r\\n        royaltyManager = RoyaltyManager(payable(_royaltyManager));\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Core Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Register a new encrypted AI dataset on Monad\\r\\n     * @param ipfsCID IPFS CID of the encrypted dataset\\r\\n     * @param encryptedKeyHash Hash of the encryption key (key itself never on-chain)\\r\\n     * @param price Price in wei (MON tokens)\\r\\n     * @param category Dataset category (CV, NLP, Audio, Tabular, Multimodal, etc.)\\r\\n     * @param description Human-readable description\\r\\n     */\\r\\n    function registerDataset(\\r\\n        string calldata ipfsCID,\\r\\n        string calldata encryptedKeyHash,\\r\\n        uint256 price,\\r\\n        string calldata category,\\r\\n        string calldata description\\r\\n    ) external override whenNotPaused returns (uint256 datasetId) {\\r\\n        require(bytes(ipfsCID).length >= 10, \\\"AIDataMarketplace: invalid CID\\\");\\r\\n        require(bytes(encryptedKeyHash).length > 0, \\\"AIDataMarketplace: missing key hash\\\");\\r\\n        require(price > 0, \\\"AIDataMarketplace: price must be > 0\\\");\\r\\n        require(bytes(category).length > 0, \\\"AIDataMarketplace: missing category\\\");\\r\\n        require(bytes(description).length > 0, \\\"AIDataMarketplace: missing description\\\");\\r\\n\\r\\n        datasetId = _datasetCounter++;\\r\\n\\r\\n        _datasets[datasetId] = DatasetLib.Dataset({\\r\\n            id: datasetId,\\r\\n            owner: msg.sender,\\r\\n            ipfsCID: ipfsCID,\\r\\n            encryptedKeyHash: encryptedKeyHash,\\r\\n            price: price,\\r\\n            isActive: true,\\r\\n            totalSales: 0,\\r\\n            totalRevenue: 0,\\r\\n            category: category,\\r\\n            description: description,\\r\\n            createdAt: block.timestamp,\\r\\n            lastUpdatedAt: block.timestamp,\\r\\n            trainingSessionCount: 0\\r\\n        });\\r\\n\\r\\n        _providerDatasets[msg.sender].push(datasetId);\\r\\n        _allDatasetIds.push(datasetId);\\r\\n\\r\\n        emit DatasetRegistered(datasetId, msg.sender, ipfsCID, price, category);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Purchase access to a dataset (pay in MON)\\r\\n     * @param datasetId ID of the dataset to purchase\\r\\n     */\\r\\n    function purchaseDataset(uint256 datasetId) external payable override whenNotPaused nonReentrant {\\r\\n        DatasetLib.Dataset storage dataset = _datasets[datasetId];\\r\\n\\r\\n        require(dataset.owner != address(0), \\\"AIDataMarketplace: dataset not found\\\");\\r\\n        require(dataset.isActive, \\\"AIDataMarketplace: dataset not active\\\");\\r\\n        require(msg.sender != dataset.owner, \\\"AIDataMarketplace: owner cannot buy own dataset\\\");\\r\\n        require(!accessManager.hasAccess(datasetId, msg.sender), \\\"AIDataMarketplace: already purchased\\\");\\r\\n        require(msg.value >= dataset.price, \\\"AIDataMarketplace: insufficient payment\\\");\\r\\n\\r\\n        // Update dataset stats\\r\\n        dataset.totalSales++;\\r\\n        dataset.totalRevenue += msg.value;\\r\\n        dataset.lastUpdatedAt = block.timestamp;\\r\\n\\r\\n        // Record purchase\\r\\n        _purchases[datasetId][msg.sender] = DatasetLib.PurchaseRecord({\\r\\n            datasetId: datasetId,\\r\\n            buyer: msg.sender,\\r\\n            pricePaid: msg.value,\\r\\n            timestamp: block.timestamp\\r\\n        });\\r\\n\\r\\n        // Update global stats\\r\\n        totalVolume += msg.value;\\r\\n        totalTransactions++;\\r\\n\\r\\n        // Grant access via AccessManager\\r\\n        accessManager.grantAccess(datasetId, msg.sender);\\r\\n\\r\\n        // Distribute royalties via RoyaltyManager (2% platform, 98% provider)\\r\\n        royaltyManager.distribute{value: msg.value}(datasetId, dataset.owner);\\r\\n\\r\\n        // Refund excess payment\\r\\n        if (msg.value > dataset.price) {\\r\\n            uint256 excess = msg.value - dataset.price;\\r\\n            (bool refunded, ) = payable(msg.sender).call{value: excess}(\\\"\\\");\\r\\n            require(refunded, \\\"AIDataMarketplace: refund failed\\\");\\r\\n        }\\r\\n\\r\\n        emit DatasetPurchased(datasetId, msg.sender, msg.value, block.timestamp);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Record a training session with proof of training\\r\\n     * @param datasetId Dataset used for training\\r\\n     * @param accuracy Model accuracy * 100 (e.g., 9523 = 95.23%)\\r\\n     * @param modelHash Keccak256 hash of the trained model\\r\\n     */\\r\\n    function recordTrainingSession(\\r\\n        uint256 datasetId,\\r\\n        uint256 accuracy,\\r\\n        bytes32 modelHash\\r\\n    ) external override whenNotPaused {\\r\\n        require(accessManager.hasAccess(datasetId, msg.sender), \\\"AIDataMarketplace: no access to dataset\\\");\\r\\n        require(accuracy <= 10000, \\\"AIDataMarketplace: accuracy > 100%\\\");\\r\\n        require(modelHash != bytes32(0), \\\"AIDataMarketplace: invalid model hash\\\");\\r\\n\\r\\n        _datasets[datasetId].trainingSessionCount++;\\r\\n        totalTrainingSessions++;\\r\\n\\r\\n        _trainingSessions[datasetId].push(DatasetLib.TrainingSession({\\r\\n            datasetId: datasetId,\\r\\n            trainer: msg.sender,\\r\\n            accuracy: accuracy,\\r\\n            modelHash: modelHash,\\r\\n            timestamp: block.timestamp\\r\\n        }));\\r\\n\\r\\n        emit TrainingSessionRecorded(datasetId, msg.sender, accuracy, modelHash);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Provider withdraws accumulated earnings from RoyaltyManager\\r\\n     */\\r\\n    function withdrawEarnings() external override nonReentrant {\\r\\n        royaltyManager.withdrawEarnings();\\r\\n        uint256 amount = 0; // Amount handled by RoyaltyManager events\\r\\n        emit EarningsWithdrawn(msg.sender, amount);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Deactivate a dataset (by owner or contract owner)\\r\\n     */\\r\\n    function deactivateDataset(uint256 datasetId) external override {\\r\\n        DatasetLib.Dataset storage dataset = _datasets[datasetId];\\r\\n        require(\\r\\n            msg.sender == dataset.owner || msg.sender == owner(),\\r\\n            \\\"AIDataMarketplace: not authorized\\\"\\r\\n        );\\r\\n        require(dataset.isActive, \\\"AIDataMarketplace: already inactive\\\");\\r\\n        dataset.isActive = false;\\r\\n        dataset.lastUpdatedAt = block.timestamp;\\r\\n        emit DatasetDeactivated(datasetId);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Update dataset price (by owner only)\\r\\n     */\\r\\n    function updatePrice(uint256 datasetId, uint256 newPrice) external override {\\r\\n        DatasetLib.Dataset storage dataset = _datasets[datasetId];\\r\\n        require(msg.sender == dataset.owner, \\\"AIDataMarketplace: not dataset owner\\\");\\r\\n        require(newPrice > 0, \\\"AIDataMarketplace: price must be > 0\\\");\\r\\n        dataset.price = newPrice;\\r\\n        dataset.lastUpdatedAt = block.timestamp;\\r\\n        emit PriceUpdated(datasetId, newPrice);\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Admin Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    function pause() external onlyOwner {\\r\\n        _pause();\\r\\n    }\\r\\n\\r\\n    function unpause() external onlyOwner {\\r\\n        _unpause();\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    function hasAccess(uint256 datasetId, address user) external view override returns (bool) {\\r\\n        return accessManager.hasAccess(datasetId, user);\\r\\n    }\\r\\n\\r\\n    function getDatasetCount() external view override returns (uint256) {\\r\\n        return _datasetCounter;\\r\\n    }\\r\\n\\r\\n    function getPendingEarnings(address provider) external view override returns (uint256) {\\r\\n        return royaltyManager.getPendingEarnings(provider);\\r\\n    }\\r\\n\\r\\n    function getDataset(uint256 datasetId) external view returns (DatasetLib.Dataset memory) {\\r\\n        require(_datasets[datasetId].owner != address(0), \\\"AIDataMarketplace: not found\\\");\\r\\n        return _datasets[datasetId];\\r\\n    }\\r\\n\\r\\n    function getProviderDatasets(address provider) external view returns (uint256[] memory) {\\r\\n        return _providerDatasets[provider];\\r\\n    }\\r\\n\\r\\n    function getAllDatasetIds() external view returns (uint256[] memory) {\\r\\n        return _allDatasetIds;\\r\\n    }\\r\\n\\r\\n    function getActiveDatasets() external view returns (uint256[] memory) {\\r\\n        uint256 count = 0;\\r\\n        for (uint256 i = 0; i < _allDatasetIds.length; i++) {\\r\\n            if (_datasets[_allDatasetIds[i]].isActive) count++;\\r\\n        }\\r\\n\\r\\n        uint256[] memory active = new uint256[](count);\\r\\n        uint256 idx = 0;\\r\\n        for (uint256 i = 0; i < _allDatasetIds.length; i++) {\\r\\n            if (_datasets[_allDatasetIds[i]].isActive) {\\r\\n                active[idx++] = _allDatasetIds[i];\\r\\n            }\\r\\n        }\\r\\n        return active;\\r\\n    }\\r\\n\\r\\n    function getTrainingSessions(uint256 datasetId)\\r\\n        external\\r\\n        view\\r\\n        returns (DatasetLib.TrainingSession[] memory)\\r\\n    {\\r\\n        return _trainingSessions[datasetId];\\r\\n    }\\r\\n\\r\\n    function getPurchaseRecord(uint256 datasetId, address buyer)\\r\\n        external\\r\\n        view\\r\\n        returns (DatasetLib.PurchaseRecord memory)\\r\\n    {\\r\\n        return _purchases[datasetId][buyer];\\r\\n    }\\r\\n\\r\\n    function getPlatformStats()\\r\\n        external\\r\\n        view\\r\\n        returns (\\r\\n            uint256 datasetCount,\\r\\n            uint256 volume,\\r\\n            uint256 transactions,\\r\\n            uint256 trainingSessions\\r\\n        )\\r\\n    {\\r\\n        return (_datasetCounter, totalVolume, totalTransactions, totalTrainingSessions);\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x6a404a6ae8e7dcf56b83448eca18c613e594803b4cc105f73cf201e16c9b2a4d\",\"license\":\"MIT\"},\"contracts/AccessManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title AccessManager\\r\\n * @dev Manages dataset access control for the AI Data Marketplace on Monad.\\r\\n *      Controls who can access encrypted datasets after purchase.\\r\\n */\\r\\ncontract AccessManager is Ownable {\\r\\n    // \\u2500\\u2500\\u2500 State \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    // datasetId => buyer => hasAccess\\r\\n    mapping(uint256 => mapping(address => bool)) private _accessGrants;\\r\\n\\r\\n    // datasetId => list of granted addresses\\r\\n    mapping(uint256 => address[]) private _accessList;\\r\\n\\r\\n    // marketplace contract address (only it can grant access)\\r\\n    address public marketplace;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Events \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    event AccessGranted(uint256 indexed datasetId, address indexed user);\\r\\n    event AccessRevoked(uint256 indexed datasetId, address indexed user);\\r\\n    event MarketplaceUpdated(address indexed newMarketplace);\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Modifiers \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    modifier onlyMarketplace() {\\r\\n        require(msg.sender == marketplace || msg.sender == owner(), \\\"AccessManager: caller not authorized\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constructor \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    constructor() Ownable(msg.sender) {}\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 External Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Set the marketplace contract address\\r\\n     */\\r\\n    function setMarketplace(address _marketplace) external onlyOwner {\\r\\n        require(_marketplace != address(0), \\\"AccessManager: zero address\\\");\\r\\n        marketplace = _marketplace;\\r\\n        emit MarketplaceUpdated(_marketplace);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Grant access to a dataset for a user (called by marketplace after purchase)\\r\\n     */\\r\\n    function grantAccess(uint256 datasetId, address user) external onlyMarketplace {\\r\\n        require(user != address(0), \\\"AccessManager: zero address\\\");\\r\\n        if (!_accessGrants[datasetId][user]) {\\r\\n            _accessGrants[datasetId][user] = true;\\r\\n            _accessList[datasetId].push(user);\\r\\n            emit AccessGranted(datasetId, user);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Revoke access from a user (emergency use only, by owner)\\r\\n     */\\r\\n    function revokeAccess(uint256 datasetId, address user) external onlyOwner {\\r\\n        require(_accessGrants[datasetId][user], \\\"AccessManager: no access to revoke\\\");\\r\\n        _accessGrants[datasetId][user] = false;\\r\\n        emit AccessRevoked(datasetId, user);\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Check if a user has access to a dataset\\r\\n     */\\r\\n    function hasAccess(uint256 datasetId, address user) external view returns (bool) {\\r\\n        return _accessGrants[datasetId][user];\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Get count of users with access to a dataset\\r\\n     */\\r\\n    function getAccessCount(uint256 datasetId) external view returns (uint256) {\\r\\n        return _accessList[datasetId].length;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Get all addresses with access to a dataset\\r\\n     */\\r\\n    function getAccessList(uint256 datasetId) external view returns (address[] memory) {\\r\\n        return _accessList[datasetId];\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x584487ea54cbb5e044377f561851c492aa77fc075da7b6343f2a24c7f61598bb\",\"license\":\"MIT\"},\"contracts/RoyaltyManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\\\";\\r\\nimport \\\"./libraries/DatasetLib.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title RoyaltyManager\\r\\n * @dev Manages royalty distribution and earnings tracking for the AI Data Marketplace on Monad.\\r\\n *      Handles 2% platform fee and 98% provider earnings.\\r\\n */\\r\\ncontract RoyaltyManager is Ownable, ReentrancyGuard {\\r\\n    using DatasetLib for uint256;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constants \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    uint256 public constant PLATFORM_FEE_BPS = 200; // 2% in basis points\\r\\n    uint256 public constant BASIS_POINTS = 10000;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 State \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    address public marketplace;\\r\\n    address public feeRecipient;\\r\\n\\r\\n    // provider => pending earnings\\r\\n    mapping(address => uint256) private _pendingEarnings;\\r\\n\\r\\n    // Total platform fees collected\\r\\n    uint256 public totalPlatformFees;\\r\\n\\r\\n    // Total provider earnings paid out\\r\\n    uint256 public totalProviderPayouts;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Events \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    event RoyaltyDistributed(\\r\\n        uint256 indexed datasetId,\\r\\n        address indexed provider,\\r\\n        uint256 providerAmount,\\r\\n        uint256 platformFee\\r\\n    );\\r\\n    event EarningsWithdrawn(address indexed provider, uint256 amount);\\r\\n    event FeeRecipientUpdated(address indexed newRecipient);\\r\\n    event MarketplaceUpdated(address indexed newMarketplace);\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Modifiers \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    modifier onlyMarketplace() {\\r\\n        require(msg.sender == marketplace || msg.sender == owner(), \\\"RoyaltyManager: not authorized\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constructor \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    constructor(address _feeRecipient) Ownable(msg.sender) {\\r\\n        require(_feeRecipient != address(0), \\\"RoyaltyManager: zero fee recipient\\\");\\r\\n        feeRecipient = _feeRecipient;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 External Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Set the marketplace contract address\\r\\n     */\\r\\n    function setMarketplace(address _marketplace) external onlyOwner {\\r\\n        require(_marketplace != address(0), \\\"RoyaltyManager: zero address\\\");\\r\\n        marketplace = _marketplace;\\r\\n        emit MarketplaceUpdated(_marketplace);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Update the fee recipient address\\r\\n     */\\r\\n    function setFeeRecipient(address _feeRecipient) external onlyOwner {\\r\\n        require(_feeRecipient != address(0), \\\"RoyaltyManager: zero address\\\");\\r\\n        feeRecipient = _feeRecipient;\\r\\n        emit FeeRecipientUpdated(_feeRecipient);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Distribute incoming payment: platform fee + provider earnings\\r\\n     * @param datasetId Dataset purchased\\r\\n     * @param provider Dataset owner\\r\\n     */\\r\\n    function distribute(uint256 datasetId, address provider) external payable onlyMarketplace {\\r\\n        require(msg.value > 0, \\\"RoyaltyManager: zero value\\\");\\r\\n        require(provider != address(0), \\\"RoyaltyManager: zero provider\\\");\\r\\n\\r\\n        uint256 platformFee = (msg.value * PLATFORM_FEE_BPS) / BASIS_POINTS;\\r\\n        uint256 providerEarnings = msg.value - platformFee;\\r\\n\\r\\n        _pendingEarnings[provider] += providerEarnings;\\r\\n        totalPlatformFees += platformFee;\\r\\n\\r\\n        // Send platform fee to fee recipient immediately\\r\\n        if (platformFee > 0) {\\r\\n            (bool sent, ) = payable(feeRecipient).call{value: platformFee}(\\\"\\\");\\r\\n            require(sent, \\\"RoyaltyManager: fee transfer failed\\\");\\r\\n        }\\r\\n\\r\\n        emit RoyaltyDistributed(datasetId, provider, providerEarnings, platformFee);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Provider withdraws their accumulated earnings\\r\\n     */\\r\\n    function withdrawEarnings() external nonReentrant {\\r\\n        uint256 amount = _pendingEarnings[msg.sender];\\r\\n        require(amount > 0, \\\"RoyaltyManager: no earnings to withdraw\\\");\\r\\n\\r\\n        _pendingEarnings[msg.sender] = 0;\\r\\n        totalProviderPayouts += amount;\\r\\n\\r\\n        (bool sent, ) = payable(msg.sender).call{value: amount}(\\\"\\\");\\r\\n        require(sent, \\\"RoyaltyManager: withdrawal failed\\\");\\r\\n\\r\\n        emit EarningsWithdrawn(msg.sender, amount);\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Get pending earnings for a provider\\r\\n     */\\r\\n    function getPendingEarnings(address provider) external view returns (uint256) {\\r\\n        return _pendingEarnings[provider];\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Emergency: only owner can withdraw contract balance\\r\\n     */\\r\\n    function emergencyWithdraw() external onlyOwner nonReentrant {\\r\\n        uint256 balance = address(this).balance;\\r\\n        require(balance > 0, \\\"RoyaltyManager: nothing to withdraw\\\");\\r\\n        (bool sent, ) = payable(owner()).call{value: balance}(\\\"\\\");\\r\\n        require(sent, \\\"RoyaltyManager: emergency withdrawal failed\\\");\\r\\n    }\\r\\n\\r\\n    receive() external payable {}\\r\\n}\\r\\n\",\"keccak256\":\"0xd0f9b51a71c22909828df28e019dcbb75b4babd208563ed10f917077f4203050\",\"license\":\"MIT\"},\"contracts/interfaces/IMarketplace.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\n/**\\r\\n * @title IMarketplace\\r\\n * @dev Interface for the AI Data Marketplace on Monad\\r\\n */\\r\\ninterface IMarketplace {\\r\\n    // \\u2500\\u2500\\u2500 Events \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n    event DatasetRegistered(\\r\\n        uint256 indexed id,\\r\\n        address indexed owner,\\r\\n        string ipfsCID,\\r\\n        uint256 price,\\r\\n        string category\\r\\n    );\\r\\n    event DatasetPurchased(\\r\\n        uint256 indexed id,\\r\\n        address indexed buyer,\\r\\n        uint256 price,\\r\\n        uint256 timestamp\\r\\n    );\\r\\n    event EarningsWithdrawn(address indexed provider, uint256 amount);\\r\\n    event TrainingSessionRecorded(\\r\\n        uint256 indexed datasetId,\\r\\n        address indexed trainer,\\r\\n        uint256 accuracy,\\r\\n        bytes32 modelHash\\r\\n    );\\r\\n    event DatasetDeactivated(uint256 indexed id);\\r\\n    event PriceUpdated(uint256 indexed id, uint256 newPrice);\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Core Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n    function registerDataset(\\r\\n        string calldata ipfsCID,\\r\\n        string calldata encryptedKeyHash,\\r\\n        uint256 price,\\r\\n        string calldata category,\\r\\n        string calldata description\\r\\n    ) external returns (uint256 datasetId);\\r\\n\\r\\n    function purchaseDataset(uint256 datasetId) external payable;\\r\\n\\r\\n    function recordTrainingSession(\\r\\n        uint256 datasetId,\\r\\n        uint256 accuracy,\\r\\n        bytes32 modelHash\\r\\n    ) external;\\r\\n\\r\\n    function withdrawEarnings() external;\\r\\n\\r\\n    function deactivateDataset(uint256 datasetId) external;\\r\\n\\r\\n    function updatePrice(uint256 datasetId, uint256 newPrice) external;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n    function hasAccess(uint256 datasetId, address user) external view returns (bool);\\r\\n\\r\\n    function getDatasetCount() external view returns (uint256);\\r\\n\\r\\n    function getPendingEarnings(address provider) external view returns (uint256);\\r\\n}\\r\\n\",\"keccak256\":\"0x9445f3e298d8da20c34bcf4c062be6b5ca4c88ee2ec681b62a355cf61d376043\",\"license\":\"MIT\"},\"contracts/libraries/DatasetLib.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\n/**\\r\\n * @title DatasetLib\\r\\n * @dev Library containing shared structs and utility functions for the AI Data Marketplace\\r\\n */\\r\\nlibrary DatasetLib {\\r\\n    // \\u2500\\u2500\\u2500 Structs \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    struct Dataset {\\r\\n        uint256 id;\\r\\n        address owner;\\r\\n        string ipfsCID;              // IPFS content identifier for encrypted dataset\\r\\n        string encryptedKeyHash;     // Hash of encryption key (never store key on-chain)\\r\\n        uint256 price;               // Price in wei (MON tokens)\\r\\n        bool isActive;\\r\\n        uint256 totalSales;\\r\\n        uint256 totalRevenue;\\r\\n        string category;             // \\\"CV\\\", \\\"NLP\\\", \\\"Audio\\\", \\\"Tabular\\\", \\\"Multimodal\\\"\\r\\n        string description;\\r\\n        uint256 createdAt;\\r\\n        uint256 lastUpdatedAt;\\r\\n        uint256 trainingSessionCount;\\r\\n    }\\r\\n\\r\\n    struct TrainingSession {\\r\\n        uint256 datasetId;\\r\\n        address trainer;\\r\\n        uint256 accuracy;            // Accuracy * 100 (e.g., 9523 = 95.23%)\\r\\n        bytes32 modelHash;           // Hash of the trained model\\r\\n        uint256 timestamp;\\r\\n    }\\r\\n\\r\\n    struct PurchaseRecord {\\r\\n        uint256 datasetId;\\r\\n        address buyer;\\r\\n        uint256 pricePaid;\\r\\n        uint256 timestamp;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Pure Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @dev Calculates platform fee from a given amount (2%)\\r\\n     */\\r\\n    function calculatePlatformFee(uint256 amount) internal pure returns (uint256) {\\r\\n        return (amount * 200) / 10000; // 2%\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Calculates provider earnings after platform fee (98%)\\r\\n     */\\r\\n    function calculateProviderEarnings(uint256 amount) internal pure returns (uint256) {\\r\\n        return amount - calculatePlatformFee(amount);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Validates IPFS CID format (basic check)\\r\\n     */\\r\\n    function isValidCID(string calldata cid) internal pure returns (bool) {\\r\\n        bytes memory cidBytes = bytes(cid);\\r\\n        return cidBytes.length >= 46 && cidBytes.length <= 64;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Validates dataset category\\r\\n     */\\r\\n    function isValidCategory(string calldata category) internal pure returns (bool) {\\r\\n        bytes32 cat = keccak256(bytes(category));\\r\\n        return (\\r\\n            cat == keccak256(bytes(\\\"CV\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"NLP\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Audio\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Tabular\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Multimodal\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Reinforcement\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"TimeSeries\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Other\\\"))\\r\\n        );\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x4c7e54fd913b6e4039d3bf88aad39673e070b6b903dc6c9d322585c6b0c4526d\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516126fe3803806126fe83398101604081905261002f916101d9565b338061005657604051631e4fbdf760e01b8152600060048201526024015b60405180910390fd5b61005f8161016d565b506000805460ff60a01b19169055600180556001600160a01b0382166100d65760405162461bcd60e51b815260206004820152602660248201527f4149446174614d61726b6574706c6163653a207a65726f20616363657373206d60448201526530b730b3b2b960d11b606482015260840161004d565b6001600160a01b03811661013c5760405162461bcd60e51b815260206004820152602760248201527f4149446174614d61726b6574706c6163653a207a65726f20726f79616c74792060448201526636b0b730b3b2b960c91b606482015260840161004d565b600280546001600160a01b039384166001600160a01b0319918216179091556003805492909316911617905561020c565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80516001600160a01b03811681146101d457600080fd5b919050565b600080604083850312156101ec57600080fd5b6101f5836101bd565b9150610203602084016101bd565b90509250929050565b6124e38061021b6000396000f3fe60806040526004361061019c5760003560e01c8063a7c842d4116100ec578063ee0042211161008a578063f2fde38b11610064578063f2fde38b14610482578063f5f067bc146104a2578063fdcb6068146104b7578063ff8fbfc9146104d757600080fd5b8063ee00422114610415578063ee295d6214610442578063eff0e7011461046257600080fd5b8063b9a60038116100c6578063b9a6003814610392578063ccf0167b146103a8578063ced14198146103c8578063db360ecd146103e857600080fd5b8063a7c842d414610347578063a8a2b2781461035d578063b73c6ce91461037d57600080fd5b80635f81a57c1161015957806382367b2d1161013357806382367b2d146102c057806382f1b6b1146102e05780638456cb59146103005780638da5cb5b1461031557600080fd5b80635f81a57c1461027357806365e1f5bf14610289578063715018a6146102ab57600080fd5b8063136d8883146101a1578063160df385146101df5780632f5201bd146102015780633f4ba83a1461022057806349ee56f9146102355780635c975abb14610248575b600080fd5b3480156101ad57600080fd5b50600454600a54600b54600c546040805194855260208501939093529183015260608201526080015b60405180910390f35b3480156101eb57600080fd5b506101ff6101fa366004611e12565b610533565b005b34801561020d57600080fd5b506004545b6040519081526020016101d6565b34801561022c57600080fd5b506101ff610662565b6101ff610243366004611e12565b610674565b34801561025457600080fd5b50600054600160a01b900460ff165b60405190151581526020016101d6565b34801561027f57600080fd5b50610212600a5481565b34801561029557600080fd5b5061029e610ba6565b6040516101d69190611e2b565b3480156102b757600080fd5b506101ff610bfe565b3480156102cc57600080fd5b506101ff6102db366004611e6e565b610c10565b3480156102ec57600080fd5b506102126102fb366004611eac565b610ced565b34801561030c57600080fd5b506101ff610d62565b34801561032157600080fd5b506000546001600160a01b03165b6040516001600160a01b0390911681526020016101d6565b34801561035357600080fd5b50610212600c5481565b34801561036957600080fd5b50610212610378366004611f10565b610d72565b34801561038957600080fd5b506101ff6111d9565b34801561039e57600080fd5b50610212600b5481565b3480156103b457600080fd5b506101ff6103c3366004611ff3565b61128b565b3480156103d457600080fd5b506102636103e336600461201f565b61151e565b3480156103f457600080fd5b50610408610403366004611e12565b61159b565b6040516101d6919061204b565b34801561042157600080fd5b50610435610430366004611e12565b611642565b6040516101d691906120ff565b34801561044e57600080fd5b5060035461032f906001600160a01b031681565b34801561046e57600080fd5b5061029e61047d366004611eac565b6119f8565b34801561048e57600080fd5b506101ff61049d366004611eac565b611a64565b3480156104ae57600080fd5b5061029e611a9f565b3480156104c357600080fd5b5060025461032f906001600160a01b031681565b3480156104e357600080fd5b506104f76104f236600461201f565b611bf1565b6040516101d69190815181526020808301516001600160a01b031690820152604080830151908201526060918201519181019190915260800190565b600081815260056020526040902060018101546001600160a01b031633148061056657506000546001600160a01b031633145b6105c15760405162461bcd60e51b815260206004820152602160248201527f4149446174614d61726b6574706c6163653a206e6f7420617574686f72697a656044820152601960fa1b60648201526084015b60405180910390fd5b600581015460ff166106215760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a20616c726561647920696e61637460448201526269766560e81b60648201526084016105b8565b60058101805460ff1916905542600b82015560405182907fb62dafcaf05bec335937120803985f465b2f6fd8755a870bddefd6d1dc39bf1f90600090a25050565b61066a611c7e565b610672611cab565b565b61067c611d00565b610684611d2b565b600081815260056020526040902060018101546001600160a01b03166106f85760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a2064617461736574206e6f7420666044820152631bdd5b9960e21b60648201526084016105b8565b600581015460ff1661075a5760405162461bcd60e51b815260206004820152602560248201527f4149446174614d61726b6574706c6163653a2064617461736574206e6f742061604482015264637469766560d81b60648201526084016105b8565b60018101546001600160a01b031633036107ce5760405162461bcd60e51b815260206004820152602f60248201527f4149446174614d61726b6574706c6163653a206f776e65722063616e6e6f742060448201526e189d5e481bdddb8819185d185cd95d608a1b60648201526084016105b8565b6002546040516319da283360e31b8152600481018490523360248201526001600160a01b039091169063ced1419890604401602060405180830381865afa15801561081d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108419190612203565b1561089a5760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a20616c7265616479207075726368604482015263185cd95960e21b60648201526084016105b8565b80600401543410156108fe5760405162461bcd60e51b815260206004820152602760248201527f4149446174614d61726b6574706c6163653a20696e73756666696369656e74206044820152661c185e5b595b9d60ca1b60648201526084016105b8565b6006810180549060006109108361223b565b9190505550348160070160008282546109299190612254565b909155505042600b820181905560408051608081018252848152336020808301828152348486018181526060860197885260008a8152600885528781209581529490935294832093518455516001840180546001600160a01b0319166001600160a01b039092169190911790555160028301559251600390910155600a8054919290916109b7908490612254565b9091555050600b80549060006109cc8361223b565b9091555050600254604051631977454b60e21b8152600481018490523360248201526001600160a01b03909116906365dd152c90604401600060405180830381600087803b158015610a1d57600080fd5b505af1158015610a31573d6000803e3d6000fd5b505060035460018401546040516370fd458160e11b8152600481018790526001600160a01b0391821660248201529116925063e1fa8b02915034906044016000604051808303818588803b158015610a8857600080fd5b505af1158015610a9c573d6000803e3d6000fd5b50505050508060040154341115610b5d576000816004015434610abf9190612267565b604051909150600090339083908381818185875af1925050503d8060008114610b04576040519150601f19603f3d011682016040523d82523d6000602084013e610b09565b606091505b5050905080610b5a5760405162461bcd60e51b815260206004820181905260248201527f4149446174614d61726b6574706c6163653a20726566756e64206661696c656460448201526064016105b8565b50505b60408051348152426020820152339184917f8c10c1224c18b0cd63a2e7f7ad2a7acb646d6e10a97dfc840f06bbc0c37eae85910160405180910390a350610ba360018055565b50565b60606009805480602002602001604051908101604052809291908181526020018280548015610bf457602002820191906000526020600020905b815481526020019060010190808311610be0575b5050505050905090565b610c06611c7e565b6106726000611d55565b600082815260056020526040902060018101546001600160a01b03163314610c865760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a206e6f742064617461736574206f6044820152633bb732b960e11b60648201526084016105b8565b60008211610ca65760405162461bcd60e51b81526004016105b89061227a565b6004810182905542600b82015560405182815283907f945c1c4e99aa89f648fbfe3df471b916f719e16d960fcec0737d4d56bd6968389060200160405180910390a2505050565b6003546040516382f1b6b160e01b81526001600160a01b03838116600483015260009216906382f1b6b190602401602060405180830381865afa158015610d38573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d5c91906122be565b92915050565b610d6a611c7e565b610672611da5565b6000610d7c611d00565b600a891015610dcd5760405162461bcd60e51b815260206004820152601e60248201527f4149446174614d61726b6574706c6163653a20696e76616c696420434944000060448201526064016105b8565b86610e265760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a206d697373696e67206b657920686044820152620c2e6d60eb1b60648201526084016105b8565b60008611610e465760405162461bcd60e51b81526004016105b89061227a565b83610e9f5760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a206d697373696e672063617465676044820152626f727960e81b60648201526084016105b8565b81610efb5760405162461bcd60e51b815260206004820152602660248201527f4149446174614d61726b6574706c6163653a206d697373696e6720646573637260448201526534b83a34b7b760d11b60648201526084016105b8565b60048054906000610f0b8361223b565b919050559050604051806101a00160405280828152602001336001600160a01b031681526020018b8b8080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250505090825250604080516020601f8c018190048102820181019092528a815291810191908b908b9081908401838280828437600092018290525093855250505060208083018a905260016040808501919091526060840183905260808401929092528151601f890182900482028101820190925287825260a0909201918890889081908401838280828437600092019190915250505090825250604080516020601f870181900481028201810190925285815291810191908690869081908401838280828437600092018290525093855250504260208085018290526040808601929092526060909401839052858352600584529182902084518155928401516001840180546001600160a01b0319166001600160a01b039092169190911790555082015160028201906110999082612376565b50606082015160038201906110ae9082612376565b506080820151600482015560a082015160058201805460ff191691151591909117905560c0820151600682015560e0820151600782015561010082015160088201906110fa9082612376565b5061012082015160098201906111109082612376565b50610140820151600a820155610160820151600b82015561018090910151600c909101553360008181526006602090815260408083208054600181810183559185529284209092018590556009805492830181559092527f6e1540171b6c0c960b71a7020d9f60077f6af931a8bbf590da0223dacf75c7af018390555182907f9c37775c6197d807e80ce52822d969584534f77eceaf7664a45ef5ca47e8f5c7906111c4908e908e908c908c908c9061245e565b60405180910390a39998505050505050505050565b6111e1611d2b565b600360009054906101000a90046001600160a01b03166001600160a01b031663b73c6ce96040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561123157600080fd5b505af1158015611245573d6000803e3d6000fd5b5050604051600080825292503391507f48dc35af7b45e2a81fffad55f6e2fafacdb1d3d0d50d24ebdc16324f5ba757f19060200160405180910390a25061067260018055565b611293611d00565b6002546040516319da283360e31b8152600481018590523360248201526001600160a01b039091169063ced1419890604401602060405180830381865afa1580156112e2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113069190612203565b6113625760405162461bcd60e51b815260206004820152602760248201527f4149446174614d61726b6574706c6163653a206e6f2061636365737320746f2060448201526619185d185cd95d60ca1b60648201526084016105b8565b6127108211156113bf5760405162461bcd60e51b815260206004820152602260248201527f4149446174614d61726b6574706c6163653a206163637572616379203e203130604482015261302560f01b60648201526084016105b8565b8061141a5760405162461bcd60e51b815260206004820152602560248201527f4149446174614d61726b6574706c6163653a20696e76616c6964206d6f64656c604482015264040d0c2e6d60db1b60648201526084016105b8565b6000838152600560205260408120600c018054916114378361223b565b9091555050600c805490600061144c8361223b565b90915550506000838152600760209081526040808320815160a08101835287815233818501818152828501898152606084018981524260808601908152865460018082018955978b529989902095516005909a02909501988955915194880180546001600160a01b0319166001600160a01b0390961695909517909455925160028701559151600386015551600490940193909355805185815291820184905285917fe918bfafe08720a3702f6510dc8ba7c52cca7522c9dfa0c313bd08d5751db248910160405180910390a3505050565b6002546040516319da283360e31b8152600481018490526001600160a01b038381166024830152600092169063ced1419890604401602060405180830381865afa158015611570573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906115949190612203565b9392505050565b606060076000838152602001908152602001600020805480602002602001604051908101604052809291908181526020016000905b828210156116375760008481526020908190206040805160a08101825260058602909201805483526001808201546001600160a01b0316848601526002820154928401929092526003810154606084015260040154608083015290835290920191016115d0565b505050509050919050565b6116b8604051806101a001604052806000815260200160006001600160a01b03168152602001606081526020016060815260200160008152602001600015158152602001600081526020016000815260200160608152602001606081526020016000815260200160008152602001600081525090565b6000828152600560205260409020600101546001600160a01b031661171f5760405162461bcd60e51b815260206004820152601c60248201527f4149446174614d61726b6574706c6163653a206e6f7420666f756e640000000060448201526064016105b8565b60008281526005602090815260409182902082516101a0810184528154815260018201546001600160a01b031692810192909252600281018054929391929184019161176a906122ed565b80601f0160208091040260200160405190810160405280929190818152602001828054611796906122ed565b80156117e35780601f106117b8576101008083540402835291602001916117e3565b820191906000526020600020905b8154815290600101906020018083116117c657829003601f168201915b505050505081526020016003820180546117fc906122ed565b80601f0160208091040260200160405190810160405280929190818152602001828054611828906122ed565b80156118755780601f1061184a57610100808354040283529160200191611875565b820191906000526020600020905b81548152906001019060200180831161185857829003601f168201915b505050918352505060048201546020820152600582015460ff1615156040820152600682015460608201526007820154608082015260088201805460a0909201916118bf906122ed565b80601f01602080910402602001604051908101604052809291908181526020018280546118eb906122ed565b80156119385780601f1061190d57610100808354040283529160200191611938565b820191906000526020600020905b81548152906001019060200180831161191b57829003601f168201915b50505050508152602001600982018054611951906122ed565b80601f016020809104026020016040519081016040528092919081815260200182805461197d906122ed565b80156119ca5780601f1061199f576101008083540402835291602001916119ca565b820191906000526020600020905b8154815290600101906020018083116119ad57829003601f168201915b50505050508152602001600a8201548152602001600b8201548152602001600c820154815250509050919050565b6001600160a01b038116600090815260066020908152604091829020805483518184028101840190945280845260609392830182828015611a5857602002820191906000526020600020905b815481526020019060010190808311611a44575b50505050509050919050565b611a6c611c7e565b6001600160a01b038116611a9657604051631e4fbdf760e01b8152600060048201526024016105b8565b610ba381611d55565b60606000805b600954811015611b03576005600060098381548110611ac657611ac6612497565b6000918252602080832090910154835282019290925260400190206005015460ff1615611afb5781611af78161223b565b9250505b600101611aa5565b5060008167ffffffffffffffff811115611b1f57611b1f6122d7565b604051908082528060200260200182016040528015611b48578160200160208202803683370190505b5090506000805b600954811015611be8576005600060098381548110611b7057611b70612497565b6000918252602080832090910154835282019290925260400190206005015460ff1615611be05760098181548110611baa57611baa612497565b9060005260206000200154838380611bc19061223b565b945081518110611bd357611bd3612497565b6020026020010181815250505b600101611b4f565b50909392505050565b611c2560405180608001604052806000815260200160006001600160a01b0316815260200160008152602001600081525090565b5060008281526008602090815260408083206001600160a01b0380861685529083529281902081516080810183528154815260018201549094169284019290925260028201549083015260030154606082015292915050565b6000546001600160a01b031633146106725760405163118cdaa760e01b81523360048201526024016105b8565b611cb3611de8565b6000805460ff60a01b191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516001600160a01b03909116815260200160405180910390a1565b600054600160a01b900460ff16156106725760405163d93c066560e01b815260040160405180910390fd5b600260015403611d4e57604051633ee5aeb560e01b815260040160405180910390fd5b6002600155565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b611dad611d00565b6000805460ff60a01b1916600160a01b1790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258611ce33390565b600054600160a01b900460ff1661067257604051638dfc202b60e01b815260040160405180910390fd5b600060208284031215611e2457600080fd5b5035919050565b602080825282518282018190526000918401906040840190835b81811015611e63578351835260209384019390920191600101611e45565b509095945050505050565b60008060408385031215611e8157600080fd5b50508035926020909101359150565b80356001600160a01b0381168114611ea757600080fd5b919050565b600060208284031215611ebe57600080fd5b61159482611e90565b60008083601f840112611ed957600080fd5b50813567ffffffffffffffff811115611ef157600080fd5b602083019150836020828501011115611f0957600080fd5b9250929050565b600080600080600080600080600060a08a8c031215611f2e57600080fd5b893567ffffffffffffffff811115611f4557600080fd5b611f518c828d01611ec7565b909a5098505060208a013567ffffffffffffffff811115611f7157600080fd5b611f7d8c828d01611ec7565b90985096505060408a0135945060608a013567ffffffffffffffff811115611fa457600080fd5b611fb08c828d01611ec7565b90955093505060808a013567ffffffffffffffff811115611fd057600080fd5b611fdc8c828d01611ec7565b915080935050809150509295985092959850929598565b60008060006060848603121561200857600080fd5b505081359360208301359350604090920135919050565b6000806040838503121561203257600080fd5b8235915061204260208401611e90565b90509250929050565b602080825282518282018190526000918401906040840190835b81811015611e63578351805184526020808201516001600160a01b0316818601526040808301519086015260608083015190860152608091820151918501919091529093019260a090920191600101612065565b6000815180845260005b818110156120df576020818501810151868301820152016120c3565b506000602082860101526020601f19601f83011685010191505092915050565b60208152815160208201526000602083015161212660408401826001600160a01b03169052565b5060408301516101a060608401526121426101c08401826120b9565b90506060840151601f1984830301608085015261215f82826120b9565b915050608084015160a084015260a084015161217f60c085018215159052565b5060c084015160e084015260e0840151610100840152610100840151601f19848303016101208501526121b282826120b9565b915050610120840151601f19848303016101408501526121d282826120b9565b9150506101408401516101608401526101608401516101808401526101808401516101a08401528091505092915050565b60006020828403121561221557600080fd5b8151801515811461159457600080fd5b634e487b7160e01b600052601160045260246000fd5b60006001820161224d5761224d612225565b5060010190565b80820180821115610d5c57610d5c612225565b81810381811115610d5c57610d5c612225565b60208082526024908201527f4149446174614d61726b6574706c6163653a207072696365206d7573742062656040820152630203e20360e41b606082015260800190565b6000602082840312156122d057600080fd5b5051919050565b634e487b7160e01b600052604160045260246000fd5b600181811c9082168061230157607f821691505b60208210810361232157634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561237157806000526020600020601f840160051c8101602085101561234e5750805b601f840160051c820191505b8181101561236e576000815560010161235a565b50505b505050565b815167ffffffffffffffff811115612390576123906122d7565b6123a48161239e84546122ed565b84612327565b6020601f8211600181146123d857600083156123c05750848201515b600019600385901b1c1916600184901b17845561236e565b600084815260208120601f198516915b8281101561240857878501518255602094850194600190920191016123e8565b50848210156124265786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b606081526000612472606083018789612435565b856020840152828103604084015261248b818587612435565b98975050505050505050565b634e487b7160e01b600052603260045260246000fdfea2646970667358221220bb71cc7b105f6d45aa695ab3dfafdf1c37155d03f792f5f152c0a1164d8e424c64736f6c634300081e0033",
+  "deployedBytecode": "0x60806040526004361061019c5760003560e01c8063a7c842d4116100ec578063ee0042211161008a578063f2fde38b11610064578063f2fde38b14610482578063f5f067bc146104a2578063fdcb6068146104b7578063ff8fbfc9146104d757600080fd5b8063ee00422114610415578063ee295d6214610442578063eff0e7011461046257600080fd5b8063b9a60038116100c6578063b9a6003814610392578063ccf0167b146103a8578063ced14198146103c8578063db360ecd146103e857600080fd5b8063a7c842d414610347578063a8a2b2781461035d578063b73c6ce91461037d57600080fd5b80635f81a57c1161015957806382367b2d1161013357806382367b2d146102c057806382f1b6b1146102e05780638456cb59146103005780638da5cb5b1461031557600080fd5b80635f81a57c1461027357806365e1f5bf14610289578063715018a6146102ab57600080fd5b8063136d8883146101a1578063160df385146101df5780632f5201bd146102015780633f4ba83a1461022057806349ee56f9146102355780635c975abb14610248575b600080fd5b3480156101ad57600080fd5b50600454600a54600b54600c546040805194855260208501939093529183015260608201526080015b60405180910390f35b3480156101eb57600080fd5b506101ff6101fa366004611e12565b610533565b005b34801561020d57600080fd5b506004545b6040519081526020016101d6565b34801561022c57600080fd5b506101ff610662565b6101ff610243366004611e12565b610674565b34801561025457600080fd5b50600054600160a01b900460ff165b60405190151581526020016101d6565b34801561027f57600080fd5b50610212600a5481565b34801561029557600080fd5b5061029e610ba6565b6040516101d69190611e2b565b3480156102b757600080fd5b506101ff610bfe565b3480156102cc57600080fd5b506101ff6102db366004611e6e565b610c10565b3480156102ec57600080fd5b506102126102fb366004611eac565b610ced565b34801561030c57600080fd5b506101ff610d62565b34801561032157600080fd5b506000546001600160a01b03165b6040516001600160a01b0390911681526020016101d6565b34801561035357600080fd5b50610212600c5481565b34801561036957600080fd5b50610212610378366004611f10565b610d72565b34801561038957600080fd5b506101ff6111d9565b34801561039e57600080fd5b50610212600b5481565b3480156103b457600080fd5b506101ff6103c3366004611ff3565b61128b565b3480156103d457600080fd5b506102636103e336600461201f565b61151e565b3480156103f457600080fd5b50610408610403366004611e12565b61159b565b6040516101d6919061204b565b34801561042157600080fd5b50610435610430366004611e12565b611642565b6040516101d691906120ff565b34801561044e57600080fd5b5060035461032f906001600160a01b031681565b34801561046e57600080fd5b5061029e61047d366004611eac565b6119f8565b34801561048e57600080fd5b506101ff61049d366004611eac565b611a64565b3480156104ae57600080fd5b5061029e611a9f565b3480156104c357600080fd5b5060025461032f906001600160a01b031681565b3480156104e357600080fd5b506104f76104f236600461201f565b611bf1565b6040516101d69190815181526020808301516001600160a01b031690820152604080830151908201526060918201519181019190915260800190565b600081815260056020526040902060018101546001600160a01b031633148061056657506000546001600160a01b031633145b6105c15760405162461bcd60e51b815260206004820152602160248201527f4149446174614d61726b6574706c6163653a206e6f7420617574686f72697a656044820152601960fa1b60648201526084015b60405180910390fd5b600581015460ff166106215760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a20616c726561647920696e61637460448201526269766560e81b60648201526084016105b8565b60058101805460ff1916905542600b82015560405182907fb62dafcaf05bec335937120803985f465b2f6fd8755a870bddefd6d1dc39bf1f90600090a25050565b61066a611c7e565b610672611cab565b565b61067c611d00565b610684611d2b565b600081815260056020526040902060018101546001600160a01b03166106f85760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a2064617461736574206e6f7420666044820152631bdd5b9960e21b60648201526084016105b8565b600581015460ff1661075a5760405162461bcd60e51b815260206004820152602560248201527f4149446174614d61726b6574706c6163653a2064617461736574206e6f742061604482015264637469766560d81b60648201526084016105b8565b60018101546001600160a01b031633036107ce5760405162461bcd60e51b815260206004820152602f60248201527f4149446174614d61726b6574706c6163653a206f776e65722063616e6e6f742060448201526e189d5e481bdddb8819185d185cd95d608a1b60648201526084016105b8565b6002546040516319da283360e31b8152600481018490523360248201526001600160a01b039091169063ced1419890604401602060405180830381865afa15801561081d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108419190612203565b1561089a5760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a20616c7265616479207075726368604482015263185cd95960e21b60648201526084016105b8565b80600401543410156108fe5760405162461bcd60e51b815260206004820152602760248201527f4149446174614d61726b6574706c6163653a20696e73756666696369656e74206044820152661c185e5b595b9d60ca1b60648201526084016105b8565b6006810180549060006109108361223b565b9190505550348160070160008282546109299190612254565b909155505042600b820181905560408051608081018252848152336020808301828152348486018181526060860197885260008a8152600885528781209581529490935294832093518455516001840180546001600160a01b0319166001600160a01b039092169190911790555160028301559251600390910155600a8054919290916109b7908490612254565b9091555050600b80549060006109cc8361223b565b9091555050600254604051631977454b60e21b8152600481018490523360248201526001600160a01b03909116906365dd152c90604401600060405180830381600087803b158015610a1d57600080fd5b505af1158015610a31573d6000803e3d6000fd5b505060035460018401546040516370fd458160e11b8152600481018790526001600160a01b0391821660248201529116925063e1fa8b02915034906044016000604051808303818588803b158015610a8857600080fd5b505af1158015610a9c573d6000803e3d6000fd5b50505050508060040154341115610b5d576000816004015434610abf9190612267565b604051909150600090339083908381818185875af1925050503d8060008114610b04576040519150601f19603f3d011682016040523d82523d6000602084013e610b09565b606091505b5050905080610b5a5760405162461bcd60e51b815260206004820181905260248201527f4149446174614d61726b6574706c6163653a20726566756e64206661696c656460448201526064016105b8565b50505b60408051348152426020820152339184917f8c10c1224c18b0cd63a2e7f7ad2a7acb646d6e10a97dfc840f06bbc0c37eae85910160405180910390a350610ba360018055565b50565b60606009805480602002602001604051908101604052809291908181526020018280548015610bf457602002820191906000526020600020905b815481526020019060010190808311610be0575b5050505050905090565b610c06611c7e565b6106726000611d55565b600082815260056020526040902060018101546001600160a01b03163314610c865760405162461bcd60e51b8152602060048201526024808201527f4149446174614d61726b6574706c6163653a206e6f742064617461736574206f6044820152633bb732b960e11b60648201526084016105b8565b60008211610ca65760405162461bcd60e51b81526004016105b89061227a565b6004810182905542600b82015560405182815283907f945c1c4e99aa89f648fbfe3df471b916f719e16d960fcec0737d4d56bd6968389060200160405180910390a2505050565b6003546040516382f1b6b160e01b81526001600160a01b03838116600483015260009216906382f1b6b190602401602060405180830381865afa158015610d38573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d5c91906122be565b92915050565b610d6a611c7e565b610672611da5565b6000610d7c611d00565b600a891015610dcd5760405162461bcd60e51b815260206004820152601e60248201527f4149446174614d61726b6574706c6163653a20696e76616c696420434944000060448201526064016105b8565b86610e265760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a206d697373696e67206b657920686044820152620c2e6d60eb1b60648201526084016105b8565b60008611610e465760405162461bcd60e51b81526004016105b89061227a565b83610e9f5760405162461bcd60e51b815260206004820152602360248201527f4149446174614d61726b6574706c6163653a206d697373696e672063617465676044820152626f727960e81b60648201526084016105b8565b81610efb5760405162461bcd60e51b815260206004820152602660248201527f4149446174614d61726b6574706c6163653a206d697373696e6720646573637260448201526534b83a34b7b760d11b60648201526084016105b8565b60048054906000610f0b8361223b565b919050559050604051806101a00160405280828152602001336001600160a01b031681526020018b8b8080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250505090825250604080516020601f8c018190048102820181019092528a815291810191908b908b9081908401838280828437600092018290525093855250505060208083018a905260016040808501919091526060840183905260808401929092528151601f890182900482028101820190925287825260a0909201918890889081908401838280828437600092019190915250505090825250604080516020601f870181900481028201810190925285815291810191908690869081908401838280828437600092018290525093855250504260208085018290526040808601929092526060909401839052858352600584529182902084518155928401516001840180546001600160a01b0319166001600160a01b039092169190911790555082015160028201906110999082612376565b50606082015160038201906110ae9082612376565b506080820151600482015560a082015160058201805460ff191691151591909117905560c0820151600682015560e0820151600782015561010082015160088201906110fa9082612376565b5061012082015160098201906111109082612376565b50610140820151600a820155610160820151600b82015561018090910151600c909101553360008181526006602090815260408083208054600181810183559185529284209092018590556009805492830181559092527f6e1540171b6c0c960b71a7020d9f60077f6af931a8bbf590da0223dacf75c7af018390555182907f9c37775c6197d807e80ce52822d969584534f77eceaf7664a45ef5ca47e8f5c7906111c4908e908e908c908c908c9061245e565b60405180910390a39998505050505050505050565b6111e1611d2b565b600360009054906101000a90046001600160a01b03166001600160a01b031663b73c6ce96040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561123157600080fd5b505af1158015611245573d6000803e3d6000fd5b5050604051600080825292503391507f48dc35af7b45e2a81fffad55f6e2fafacdb1d3d0d50d24ebdc16324f5ba757f19060200160405180910390a25061067260018055565b611293611d00565b6002546040516319da283360e31b8152600481018590523360248201526001600160a01b039091169063ced1419890604401602060405180830381865afa1580156112e2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113069190612203565b6113625760405162461bcd60e51b815260206004820152602760248201527f4149446174614d61726b6574706c6163653a206e6f2061636365737320746f2060448201526619185d185cd95d60ca1b60648201526084016105b8565b6127108211156113bf5760405162461bcd60e51b815260206004820152602260248201527f4149446174614d61726b6574706c6163653a206163637572616379203e203130604482015261302560f01b60648201526084016105b8565b8061141a5760405162461bcd60e51b815260206004820152602560248201527f4149446174614d61726b6574706c6163653a20696e76616c6964206d6f64656c604482015264040d0c2e6d60db1b60648201526084016105b8565b6000838152600560205260408120600c018054916114378361223b565b9091555050600c805490600061144c8361223b565b90915550506000838152600760209081526040808320815160a08101835287815233818501818152828501898152606084018981524260808601908152865460018082018955978b529989902095516005909a02909501988955915194880180546001600160a01b0319166001600160a01b0390961695909517909455925160028701559151600386015551600490940193909355805185815291820184905285917fe918bfafe08720a3702f6510dc8ba7c52cca7522c9dfa0c313bd08d5751db248910160405180910390a3505050565b6002546040516319da283360e31b8152600481018490526001600160a01b038381166024830152600092169063ced1419890604401602060405180830381865afa158015611570573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906115949190612203565b9392505050565b606060076000838152602001908152602001600020805480602002602001604051908101604052809291908181526020016000905b828210156116375760008481526020908190206040805160a08101825260058602909201805483526001808201546001600160a01b0316848601526002820154928401929092526003810154606084015260040154608083015290835290920191016115d0565b505050509050919050565b6116b8604051806101a001604052806000815260200160006001600160a01b03168152602001606081526020016060815260200160008152602001600015158152602001600081526020016000815260200160608152602001606081526020016000815260200160008152602001600081525090565b6000828152600560205260409020600101546001600160a01b031661171f5760405162461bcd60e51b815260206004820152601c60248201527f4149446174614d61726b6574706c6163653a206e6f7420666f756e640000000060448201526064016105b8565b60008281526005602090815260409182902082516101a0810184528154815260018201546001600160a01b031692810192909252600281018054929391929184019161176a906122ed565b80601f0160208091040260200160405190810160405280929190818152602001828054611796906122ed565b80156117e35780601f106117b8576101008083540402835291602001916117e3565b820191906000526020600020905b8154815290600101906020018083116117c657829003601f168201915b505050505081526020016003820180546117fc906122ed565b80601f0160208091040260200160405190810160405280929190818152602001828054611828906122ed565b80156118755780601f1061184a57610100808354040283529160200191611875565b820191906000526020600020905b81548152906001019060200180831161185857829003601f168201915b505050918352505060048201546020820152600582015460ff1615156040820152600682015460608201526007820154608082015260088201805460a0909201916118bf906122ed565b80601f01602080910402602001604051908101604052809291908181526020018280546118eb906122ed565b80156119385780601f1061190d57610100808354040283529160200191611938565b820191906000526020600020905b81548152906001019060200180831161191b57829003601f168201915b50505050508152602001600982018054611951906122ed565b80601f016020809104026020016040519081016040528092919081815260200182805461197d906122ed565b80156119ca5780601f1061199f576101008083540402835291602001916119ca565b820191906000526020600020905b8154815290600101906020018083116119ad57829003601f168201915b50505050508152602001600a8201548152602001600b8201548152602001600c820154815250509050919050565b6001600160a01b038116600090815260066020908152604091829020805483518184028101840190945280845260609392830182828015611a5857602002820191906000526020600020905b815481526020019060010190808311611a44575b50505050509050919050565b611a6c611c7e565b6001600160a01b038116611a9657604051631e4fbdf760e01b8152600060048201526024016105b8565b610ba381611d55565b60606000805b600954811015611b03576005600060098381548110611ac657611ac6612497565b6000918252602080832090910154835282019290925260400190206005015460ff1615611afb5781611af78161223b565b9250505b600101611aa5565b5060008167ffffffffffffffff811115611b1f57611b1f6122d7565b604051908082528060200260200182016040528015611b48578160200160208202803683370190505b5090506000805b600954811015611be8576005600060098381548110611b7057611b70612497565b6000918252602080832090910154835282019290925260400190206005015460ff1615611be05760098181548110611baa57611baa612497565b9060005260206000200154838380611bc19061223b565b945081518110611bd357611bd3612497565b6020026020010181815250505b600101611b4f565b50909392505050565b611c2560405180608001604052806000815260200160006001600160a01b0316815260200160008152602001600081525090565b5060008281526008602090815260408083206001600160a01b0380861685529083529281902081516080810183528154815260018201549094169284019290925260028201549083015260030154606082015292915050565b6000546001600160a01b031633146106725760405163118cdaa760e01b81523360048201526024016105b8565b611cb3611de8565b6000805460ff60a01b191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516001600160a01b03909116815260200160405180910390a1565b600054600160a01b900460ff16156106725760405163d93c066560e01b815260040160405180910390fd5b600260015403611d4e57604051633ee5aeb560e01b815260040160405180910390fd5b6002600155565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b611dad611d00565b6000805460ff60a01b1916600160a01b1790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258611ce33390565b600054600160a01b900460ff1661067257604051638dfc202b60e01b815260040160405180910390fd5b600060208284031215611e2457600080fd5b5035919050565b602080825282518282018190526000918401906040840190835b81811015611e63578351835260209384019390920191600101611e45565b509095945050505050565b60008060408385031215611e8157600080fd5b50508035926020909101359150565b80356001600160a01b0381168114611ea757600080fd5b919050565b600060208284031215611ebe57600080fd5b61159482611e90565b60008083601f840112611ed957600080fd5b50813567ffffffffffffffff811115611ef157600080fd5b602083019150836020828501011115611f0957600080fd5b9250929050565b600080600080600080600080600060a08a8c031215611f2e57600080fd5b893567ffffffffffffffff811115611f4557600080fd5b611f518c828d01611ec7565b909a5098505060208a013567ffffffffffffffff811115611f7157600080fd5b611f7d8c828d01611ec7565b90985096505060408a0135945060608a013567ffffffffffffffff811115611fa457600080fd5b611fb08c828d01611ec7565b90955093505060808a013567ffffffffffffffff811115611fd057600080fd5b611fdc8c828d01611ec7565b915080935050809150509295985092959850929598565b60008060006060848603121561200857600080fd5b505081359360208301359350604090920135919050565b6000806040838503121561203257600080fd5b8235915061204260208401611e90565b90509250929050565b602080825282518282018190526000918401906040840190835b81811015611e63578351805184526020808201516001600160a01b0316818601526040808301519086015260608083015190860152608091820151918501919091529093019260a090920191600101612065565b6000815180845260005b818110156120df576020818501810151868301820152016120c3565b506000602082860101526020601f19601f83011685010191505092915050565b60208152815160208201526000602083015161212660408401826001600160a01b03169052565b5060408301516101a060608401526121426101c08401826120b9565b90506060840151601f1984830301608085015261215f82826120b9565b915050608084015160a084015260a084015161217f60c085018215159052565b5060c084015160e084015260e0840151610100840152610100840151601f19848303016101208501526121b282826120b9565b915050610120840151601f19848303016101408501526121d282826120b9565b9150506101408401516101608401526101608401516101808401526101808401516101a08401528091505092915050565b60006020828403121561221557600080fd5b8151801515811461159457600080fd5b634e487b7160e01b600052601160045260246000fd5b60006001820161224d5761224d612225565b5060010190565b80820180821115610d5c57610d5c612225565b81810381811115610d5c57610d5c612225565b60208082526024908201527f4149446174614d61726b6574706c6163653a207072696365206d7573742062656040820152630203e20360e41b606082015260800190565b6000602082840312156122d057600080fd5b5051919050565b634e487b7160e01b600052604160045260246000fd5b600181811c9082168061230157607f821691505b60208210810361232157634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561237157806000526020600020601f840160051c8101602085101561234e5750805b601f840160051c820191505b8181101561236e576000815560010161235a565b50505b505050565b815167ffffffffffffffff811115612390576123906122d7565b6123a48161239e84546122ed565b84612327565b6020601f8211600181146123d857600083156123c05750848201515b600019600385901b1c1916600184901b17845561236e565b600084815260208120601f198516915b8281101561240857878501518255602094850194600190920191016123e8565b50848210156124265786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b606081526000612472606083018789612435565b856020840152828103604084015261248b818587612435565b98975050505050505050565b634e487b7160e01b600052603260045260246000fdfea2646970667358221220bb71cc7b105f6d45aa695ab3dfafdf1c37155d03f792f5f152c0a1164d8e424c64736f6c634300081e0033",
+  "devdoc": {
+    "details": "Core AI Data Marketplace contract deployed on Monad.      Enables privacy-preserving AI dataset transactions with:      - IPFS-based encrypted storage (CID on-chain only)      - MON token payments      - 2% platform fee, 98% to providers      - On-chain training session proofs      - Access control via AccessManager      - Royalty distribution via RoyaltyManager",
+    "errors": {
+      "EnforcedPause()": [
+        {
+          "details": "The operation failed because the contract is paused."
+        }
+      ],
+      "ExpectedPause()": [
+        {
+          "details": "The operation failed because the contract is not paused."
+        }
+      ],
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ],
+      "ReentrancyGuardReentrantCall()": [
+        {
+          "details": "Unauthorized reentrant call."
+        }
+      ]
+    },
+    "events": {
+      "Paused(address)": {
+        "details": "Emitted when the pause is triggered by `account`."
+      },
+      "Unpaused(address)": {
+        "details": "Emitted when the pause is lifted by `account`."
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "paused()": {
+        "details": "Returns true if the contract is paused, and false otherwise."
+      },
+      "purchaseDataset(uint256)": {
+        "params": {
+          "datasetId": "ID of the dataset to purchase"
+        }
+      },
+      "recordTrainingSession(uint256,uint256,bytes32)": {
+        "params": {
+          "accuracy": "Model accuracy * 100 (e.g., 9523 = 95.23%)",
+          "datasetId": "Dataset used for training",
+          "modelHash": "Keccak256 hash of the trained model"
+        }
+      },
+      "registerDataset(string,string,uint256,string,string)": {
+        "params": {
+          "category": "Dataset category (CV, NLP, Audio, Tabular, Multimodal, etc.)",
+          "description": "Human-readable description",
+          "encryptedKeyHash": "Hash of the encryption key (key itself never on-chain)",
+          "ipfsCID": "IPFS CID of the encrypted dataset",
+          "price": "Price in wei (MON tokens)"
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "title": "AIDataMarketplace",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "deactivateDataset(uint256)": {
+        "notice": "Deactivate a dataset (by owner or contract owner)"
+      },
+      "purchaseDataset(uint256)": {
+        "notice": "Purchase access to a dataset (pay in MON)"
+      },
+      "recordTrainingSession(uint256,uint256,bytes32)": {
+        "notice": "Record a training session with proof of training"
+      },
+      "registerDataset(string,string,uint256,string,string)": {
+        "notice": "Register a new encrypted AI dataset on Monad"
+      },
+      "updatePrice(uint256,uint256)": {
+        "notice": "Update dataset price (by owner only)"
+      },
+      "withdrawEarnings()": {
+        "notice": "Provider withdraws accumulated earnings from RoyaltyManager"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 186,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_paused",
+        "offset": 20,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 305,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_status",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 388,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "accessManager",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(AccessManager)1427"
+      },
+      {
+        "astId": 391,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "royaltyManager",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_contract(RoyaltyManager)2138"
+      },
+      {
+        "astId": 393,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_datasetCounter",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 398,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_datasets",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint256,t_struct(Dataset)2550_storage)"
+      },
+      {
+        "astId": 403,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_providerDatasets",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)"
+      },
+      {
+        "astId": 409,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_trainingSessions",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_uint256,t_array(t_struct(TrainingSession)2561_storage)dyn_storage)"
+      },
+      {
+        "astId": 416,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_purchases",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_uint256,t_mapping(t_address,t_struct(PurchaseRecord)2570_storage))"
+      },
+      {
+        "astId": 419,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "_allDatasetIds",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_array(t_uint256)dyn_storage"
+      },
+      {
+        "astId": 421,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "totalVolume",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 423,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "totalTransactions",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 425,
+        "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+        "label": "totalTrainingSessions",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(TrainingSession)2561_storage)dyn_storage": {
+        "base": "t_struct(TrainingSession)2561_storage",
+        "encoding": "dynamic_array",
+        "label": "struct DatasetLib.TrainingSession[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(AccessManager)1427": {
+        "encoding": "inplace",
+        "label": "contract AccessManager",
+        "numberOfBytes": "20"
+      },
+      "t_contract(RoyaltyManager)2138": {
+        "encoding": "inplace",
+        "label": "contract RoyaltyManager",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint256)dyn_storage"
+      },
+      "t_mapping(t_address,t_struct(PurchaseRecord)2570_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct DatasetLib.PurchaseRecord)",
+        "numberOfBytes": "32",
+        "value": "t_struct(PurchaseRecord)2570_storage"
+      },
+      "t_mapping(t_uint256,t_array(t_struct(TrainingSession)2561_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct DatasetLib.TrainingSession[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_struct(TrainingSession)2561_storage)dyn_storage"
+      },
+      "t_mapping(t_uint256,t_mapping(t_address,t_struct(PurchaseRecord)2570_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => mapping(address => struct DatasetLib.PurchaseRecord))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_struct(PurchaseRecord)2570_storage)"
+      },
+      "t_mapping(t_uint256,t_struct(Dataset)2550_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct DatasetLib.Dataset)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Dataset)2550_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Dataset)2550_storage": {
+        "encoding": "inplace",
+        "label": "struct DatasetLib.Dataset",
+        "members": [
+          {
+            "astId": 2525,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "id",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2527,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "owner",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 2529,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "ipfsCID",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2531,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "encryptedKeyHash",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2533,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "price",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2535,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "isActive",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2537,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "totalSales",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2539,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "totalRevenue",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2541,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "category",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2543,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "description",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2545,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "createdAt",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2547,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "lastUpdatedAt",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2549,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "trainingSessionCount",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "416"
+      },
+      "t_struct(PurchaseRecord)2570_storage": {
+        "encoding": "inplace",
+        "label": "struct DatasetLib.PurchaseRecord",
+        "members": [
+          {
+            "astId": 2563,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "datasetId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2565,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "buyer",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 2567,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "pricePaid",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2569,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "timestamp",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_struct(TrainingSession)2561_storage": {
+        "encoding": "inplace",
+        "label": "struct DatasetLib.TrainingSession",
+        "members": [
+          {
+            "astId": 2552,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "datasetId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2554,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "trainer",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 2556,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "accuracy",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2558,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "modelHash",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 2560,
+            "contract": "contracts/AIDataMarketplace.sol:AIDataMarketplace",
+            "label": "timestamp",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

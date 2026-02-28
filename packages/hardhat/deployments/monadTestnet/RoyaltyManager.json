@@ -1,0 +1,512 @@
+{
+  "address": "0xc19f947C383eBfDA2ab76b940Ea1538F219e6755",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_feeRecipient",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ReentrancyGuardReentrantCall",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "EarningsWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newRecipient",
+          "type": "address"
+        }
+      ],
+      "name": "FeeRecipientUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newMarketplace",
+          "type": "address"
+        }
+      ],
+      "name": "MarketplaceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "providerAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "platformFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "RoyaltyDistributed",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "BASIS_POINTS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "PLATFORM_FEE_BPS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        }
+      ],
+      "name": "distribute",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "emergencyWithdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "feeRecipient",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "provider",
+          "type": "address"
+        }
+      ],
+      "name": "getPendingEarnings",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "marketplace",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_feeRecipient",
+          "type": "address"
+        }
+      ],
+      "name": "setFeeRecipient",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_marketplace",
+          "type": "address"
+        }
+      ],
+      "name": "setMarketplace",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalPlatformFees",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalProviderPayouts",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawEarnings",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0xd5040e157ba63c6e272e79ff9d694b44f9ba2878782ee629e4ac574beedb4554",
+  "receipt": {
+    "to": null,
+    "from": "0x9477267ccfDC6dAb9B0Df72D9238F1C5F64AbcD7",
+    "contractAddress": "0xc19f947C383eBfDA2ab76b940Ea1538F219e6755",
+    "transactionIndex": 2,
+    "gasUsed": "782020",
+    "logsBloom": "0x00000000000000000000000000000000000040000000000000800000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000200000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000020000000000000000000000002000000000000000000000000000000000000000000",
+    "blockHash": "0xbc29bfef078a1c0fd181c269ac6f5f889441834413b93d693fb2ca0a899806b9",
+    "transactionHash": "0xd5040e157ba63c6e272e79ff9d694b44f9ba2878782ee629e4ac574beedb4554",
+    "logs": [
+      {
+        "transactionIndex": 2,
+        "blockNumber": 15748256,
+        "transactionHash": "0xd5040e157ba63c6e272e79ff9d694b44f9ba2878782ee629e4ac574beedb4554",
+        "address": "0xc19f947C383eBfDA2ab76b940Ea1538F219e6755",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000009477267ccfdc6dab9b0df72d9238f1c5f64abcd7"
+        ],
+        "data": "0x",
+        "logIndex": 5,
+        "blockHash": "0xbc29bfef078a1c0fd181c269ac6f5f889441834413b93d693fb2ca0a899806b9"
+      }
+    ],
+    "blockNumber": 15748256,
+    "cumulativeGasUsed": "1007403",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x9477267ccfDC6dAb9B0Df72D9238F1C5F64AbcD7"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "7b6a1b19683268292cda310fe0b75767",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_feeRecipient\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ReentrancyGuardReentrantCall\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"EarningsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newRecipient\",\"type\":\"address\"}],\"name\":\"FeeRecipientUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newMarketplace\",\"type\":\"address\"}],\"name\":\"MarketplaceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"providerAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"platformFee\",\"type\":\"uint256\"}],\"name\":\"RoyaltyDistributed\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"BASIS_POINTS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PLATFORM_FEE_BPS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"distribute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"emergencyWithdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeRecipient\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"provider\",\"type\":\"address\"}],\"name\":\"getPendingEarnings\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketplace\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_feeRecipient\",\"type\":\"address\"}],\"name\":\"setFeeRecipient\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_marketplace\",\"type\":\"address\"}],\"name\":\"setMarketplace\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalPlatformFees\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalProviderPayouts\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawEarnings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"Manages royalty distribution and earnings tracking for the AI Data Marketplace on Monad.      Handles 2% platform fee and 98% provider earnings.\",\"errors\":{\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}],\"ReentrancyGuardReentrantCall()\":[{\"details\":\"Unauthorized reentrant call.\"}]},\"kind\":\"dev\",\"methods\":{\"distribute(uint256,address)\":{\"params\":{\"datasetId\":\"Dataset purchased\",\"provider\":\"Dataset owner\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"title\":\"RoyaltyManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"distribute(uint256,address)\":{\"notice\":\"Distribute incoming payment: platform fee + provider earnings\"},\"emergencyWithdraw()\":{\"notice\":\"Emergency: only owner can withdraw contract balance\"},\"getPendingEarnings(address)\":{\"notice\":\"Get pending earnings for a provider\"},\"setFeeRecipient(address)\":{\"notice\":\"Update the fee recipient address\"},\"setMarketplace(address)\":{\"notice\":\"Set the marketplace contract address\"},\"withdrawEarnings()\":{\"notice\":\"Provider withdraws their accumulated earnings\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/RoyaltyManager.sol\":\"RoyaltyManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/ReentrancyGuard.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Contract module that helps prevent reentrant calls to a function.\\n *\\n * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier\\n * available, which can be applied to functions to make sure there are no nested\\n * (reentrant) calls to them.\\n *\\n * Note that because there is a single `nonReentrant` guard, functions marked as\\n * `nonReentrant` may not call one another. This can be worked around by making\\n * those functions `private`, and then adding `external` `nonReentrant` entry\\n * points to them.\\n *\\n * TIP: If you would like to learn more about reentrancy and alternative ways\\n * to protect against it, check out our blog post\\n * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].\\n */\\nabstract contract ReentrancyGuard {\\n    // Booleans are more expensive than uint256 or any type that takes up a full\\n    // word because each write operation emits an extra SLOAD to first read the\\n    // slot's contents, replace the bits taken up by the boolean, and then write\\n    // back. This is the compiler's defense against contract upgrades and\\n    // pointer aliasing, and it cannot be disabled.\\n\\n    // The values being non-zero value makes deployment a bit more expensive,\\n    // but in exchange the refund on every call to nonReentrant will be lower in\\n    // amount. Since refunds are capped to a percentage of the total\\n    // transaction's gas, it is best to keep them low in cases like this one, to\\n    // increase the likelihood of the full refund coming into effect.\\n    uint256 private constant NOT_ENTERED = 1;\\n    uint256 private constant ENTERED = 2;\\n\\n    uint256 private _status;\\n\\n    /**\\n     * @dev Unauthorized reentrant call.\\n     */\\n    error ReentrancyGuardReentrantCall();\\n\\n    constructor() {\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Prevents a contract from calling itself, directly or indirectly.\\n     * Calling a `nonReentrant` function from another `nonReentrant`\\n     * function is not supported. It is possible to prevent this from happening\\n     * by making the `nonReentrant` function external, and making it call a\\n     * `private` function that does the actual work.\\n     */\\n    modifier nonReentrant() {\\n        _nonReentrantBefore();\\n        _;\\n        _nonReentrantAfter();\\n    }\\n\\n    function _nonReentrantBefore() private {\\n        // On the first call to nonReentrant, _status will be NOT_ENTERED\\n        if (_status == ENTERED) {\\n            revert ReentrancyGuardReentrantCall();\\n        }\\n\\n        // Any calls to nonReentrant after this point will fail\\n        _status = ENTERED;\\n    }\\n\\n    function _nonReentrantAfter() private {\\n        // By storing the original value once again, a refund is triggered (see\\n        // https://eips.ethereum.org/EIPS/eip-2200)\\n        _status = NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Returns true if the reentrancy guard is currently set to \\\"entered\\\", which indicates there is a\\n     * `nonReentrant` function in the call stack.\\n     */\\n    function _reentrancyGuardEntered() internal view returns (bool) {\\n        return _status == ENTERED;\\n    }\\n}\\n\",\"keccak256\":\"0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236\",\"license\":\"MIT\"},\"contracts/RoyaltyManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\nimport \\\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\\\";\\r\\nimport \\\"./libraries/DatasetLib.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title RoyaltyManager\\r\\n * @dev Manages royalty distribution and earnings tracking for the AI Data Marketplace on Monad.\\r\\n *      Handles 2% platform fee and 98% provider earnings.\\r\\n */\\r\\ncontract RoyaltyManager is Ownable, ReentrancyGuard {\\r\\n    using DatasetLib for uint256;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constants \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    uint256 public constant PLATFORM_FEE_BPS = 200; // 2% in basis points\\r\\n    uint256 public constant BASIS_POINTS = 10000;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 State \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    address public marketplace;\\r\\n    address public feeRecipient;\\r\\n\\r\\n    // provider => pending earnings\\r\\n    mapping(address => uint256) private _pendingEarnings;\\r\\n\\r\\n    // Total platform fees collected\\r\\n    uint256 public totalPlatformFees;\\r\\n\\r\\n    // Total provider earnings paid out\\r\\n    uint256 public totalProviderPayouts;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Events \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    event RoyaltyDistributed(\\r\\n        uint256 indexed datasetId,\\r\\n        address indexed provider,\\r\\n        uint256 providerAmount,\\r\\n        uint256 platformFee\\r\\n    );\\r\\n    event EarningsWithdrawn(address indexed provider, uint256 amount);\\r\\n    event FeeRecipientUpdated(address indexed newRecipient);\\r\\n    event MarketplaceUpdated(address indexed newMarketplace);\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Modifiers \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    modifier onlyMarketplace() {\\r\\n        require(msg.sender == marketplace || msg.sender == owner(), \\\"RoyaltyManager: not authorized\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constructor \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    constructor(address _feeRecipient) Ownable(msg.sender) {\\r\\n        require(_feeRecipient != address(0), \\\"RoyaltyManager: zero fee recipient\\\");\\r\\n        feeRecipient = _feeRecipient;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 External Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Set the marketplace contract address\\r\\n     */\\r\\n    function setMarketplace(address _marketplace) external onlyOwner {\\r\\n        require(_marketplace != address(0), \\\"RoyaltyManager: zero address\\\");\\r\\n        marketplace = _marketplace;\\r\\n        emit MarketplaceUpdated(_marketplace);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Update the fee recipient address\\r\\n     */\\r\\n    function setFeeRecipient(address _feeRecipient) external onlyOwner {\\r\\n        require(_feeRecipient != address(0), \\\"RoyaltyManager: zero address\\\");\\r\\n        feeRecipient = _feeRecipient;\\r\\n        emit FeeRecipientUpdated(_feeRecipient);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Distribute incoming payment: platform fee + provider earnings\\r\\n     * @param datasetId Dataset purchased\\r\\n     * @param provider Dataset owner\\r\\n     */\\r\\n    function distribute(uint256 datasetId, address provider) external payable onlyMarketplace {\\r\\n        require(msg.value > 0, \\\"RoyaltyManager: zero value\\\");\\r\\n        require(provider != address(0), \\\"RoyaltyManager: zero provider\\\");\\r\\n\\r\\n        uint256 platformFee = (msg.value * PLATFORM_FEE_BPS) / BASIS_POINTS;\\r\\n        uint256 providerEarnings = msg.value - platformFee;\\r\\n\\r\\n        _pendingEarnings[provider] += providerEarnings;\\r\\n        totalPlatformFees += platformFee;\\r\\n\\r\\n        // Send platform fee to fee recipient immediately\\r\\n        if (platformFee > 0) {\\r\\n            (bool sent, ) = payable(feeRecipient).call{value: platformFee}(\\\"\\\");\\r\\n            require(sent, \\\"RoyaltyManager: fee transfer failed\\\");\\r\\n        }\\r\\n\\r\\n        emit RoyaltyDistributed(datasetId, provider, providerEarnings, platformFee);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Provider withdraws their accumulated earnings\\r\\n     */\\r\\n    function withdrawEarnings() external nonReentrant {\\r\\n        uint256 amount = _pendingEarnings[msg.sender];\\r\\n        require(amount > 0, \\\"RoyaltyManager: no earnings to withdraw\\\");\\r\\n\\r\\n        _pendingEarnings[msg.sender] = 0;\\r\\n        totalProviderPayouts += amount;\\r\\n\\r\\n        (bool sent, ) = payable(msg.sender).call{value: amount}(\\\"\\\");\\r\\n        require(sent, \\\"RoyaltyManager: withdrawal failed\\\");\\r\\n\\r\\n        emit EarningsWithdrawn(msg.sender, amount);\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Get pending earnings for a provider\\r\\n     */\\r\\n    function getPendingEarnings(address provider) external view returns (uint256) {\\r\\n        return _pendingEarnings[provider];\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Emergency: only owner can withdraw contract balance\\r\\n     */\\r\\n    function emergencyWithdraw() external onlyOwner nonReentrant {\\r\\n        uint256 balance = address(this).balance;\\r\\n        require(balance > 0, \\\"RoyaltyManager: nothing to withdraw\\\");\\r\\n        (bool sent, ) = payable(owner()).call{value: balance}(\\\"\\\");\\r\\n        require(sent, \\\"RoyaltyManager: emergency withdrawal failed\\\");\\r\\n    }\\r\\n\\r\\n    receive() external payable {}\\r\\n}\\r\\n\",\"keccak256\":\"0xd0f9b51a71c22909828df28e019dcbb75b4babd208563ed10f917077f4203050\",\"license\":\"MIT\"},\"contracts/libraries/DatasetLib.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\n/**\\r\\n * @title DatasetLib\\r\\n * @dev Library containing shared structs and utility functions for the AI Data Marketplace\\r\\n */\\r\\nlibrary DatasetLib {\\r\\n    // \\u2500\\u2500\\u2500 Structs \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    struct Dataset {\\r\\n        uint256 id;\\r\\n        address owner;\\r\\n        string ipfsCID;              // IPFS content identifier for encrypted dataset\\r\\n        string encryptedKeyHash;     // Hash of encryption key (never store key on-chain)\\r\\n        uint256 price;               // Price in wei (MON tokens)\\r\\n        bool isActive;\\r\\n        uint256 totalSales;\\r\\n        uint256 totalRevenue;\\r\\n        string category;             // \\\"CV\\\", \\\"NLP\\\", \\\"Audio\\\", \\\"Tabular\\\", \\\"Multimodal\\\"\\r\\n        string description;\\r\\n        uint256 createdAt;\\r\\n        uint256 lastUpdatedAt;\\r\\n        uint256 trainingSessionCount;\\r\\n    }\\r\\n\\r\\n    struct TrainingSession {\\r\\n        uint256 datasetId;\\r\\n        address trainer;\\r\\n        uint256 accuracy;            // Accuracy * 100 (e.g., 9523 = 95.23%)\\r\\n        bytes32 modelHash;           // Hash of the trained model\\r\\n        uint256 timestamp;\\r\\n    }\\r\\n\\r\\n    struct PurchaseRecord {\\r\\n        uint256 datasetId;\\r\\n        address buyer;\\r\\n        uint256 pricePaid;\\r\\n        uint256 timestamp;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Pure Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @dev Calculates platform fee from a given amount (2%)\\r\\n     */\\r\\n    function calculatePlatformFee(uint256 amount) internal pure returns (uint256) {\\r\\n        return (amount * 200) / 10000; // 2%\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Calculates provider earnings after platform fee (98%)\\r\\n     */\\r\\n    function calculateProviderEarnings(uint256 amount) internal pure returns (uint256) {\\r\\n        return amount - calculatePlatformFee(amount);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Validates IPFS CID format (basic check)\\r\\n     */\\r\\n    function isValidCID(string calldata cid) internal pure returns (bool) {\\r\\n        bytes memory cidBytes = bytes(cid);\\r\\n        return cidBytes.length >= 46 && cidBytes.length <= 64;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Validates dataset category\\r\\n     */\\r\\n    function isValidCategory(string calldata category) internal pure returns (bool) {\\r\\n        bytes32 cat = keccak256(bytes(category));\\r\\n        return (\\r\\n            cat == keccak256(bytes(\\\"CV\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"NLP\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Audio\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Tabular\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Multimodal\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Reinforcement\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"TimeSeries\\\")) ||\\r\\n            cat == keccak256(bytes(\\\"Other\\\"))\\r\\n        );\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x4c7e54fd913b6e4039d3bf88aad39673e070b6b903dc6c9d322585c6b0c4526d\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610cdb380380610cdb83398101604081905261002f9161013a565b338061005657604051631e4fbdf760e01b8152600060048201526024015b60405180910390fd5b61005f816100ea565b50600180556001600160a01b0381166100c55760405162461bcd60e51b815260206004820152602260248201527f526f79616c74794d616e616765723a207a65726f2066656520726563697069656044820152611b9d60f21b606482015260840161004d565b600380546001600160a01b0319166001600160a01b039290921691909117905561016a565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60006020828403121561014c57600080fd5b81516001600160a01b038116811461016357600080fd5b9392505050565b610b62806101796000396000f3fe6080604052600436106100ec5760003560e01c8063abc8c7af1161008a578063e1f1c4a711610059578063e1f1c4a714610259578063e1fa8b021461026f578063e74b981b14610282578063f2fde38b146102a257600080fd5b8063abc8c7af146101f9578063b73c6ce914610219578063d3631fa51461022e578063db2e21bc1461024457600080fd5b806373ad6c2d116100c657806373ad6c2d1461016f5780637fc8f5fe1461018f57806382f1b6b1146101a55780638da5cb5b146101db57600080fd5b806346904840146100f8578063539aa77f14610135578063715018a61461015857600080fd5b366100f357005b600080fd5b34801561010457600080fd5b50600354610118906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561014157600080fd5b5061014a60c881565b60405190815260200161012c565b34801561016457600080fd5b5061016d6102c2565b005b34801561017b57600080fd5b5061016d61018a366004610a63565b6102d6565b34801561019b57600080fd5b5061014a60065481565b3480156101b157600080fd5b5061014a6101c0366004610a63565b6001600160a01b031660009081526004602052604090205490565b3480156101e757600080fd5b506000546001600160a01b0316610118565b34801561020557600080fd5b50600254610118906001600160a01b031681565b34801561022557600080fd5b5061016d610383565b34801561023a57600080fd5b5061014a60055481565b34801561025057600080fd5b5061016d610503565b34801561026557600080fd5b5061014a61271081565b61016d61027d366004610a85565b61062f565b34801561028e57600080fd5b5061016d61029d366004610a63565b6108ba565b3480156102ae57600080fd5b5061016d6102bd366004610a63565b610962565b6102ca6109a0565b6102d460006109cd565b565b6102de6109a0565b6001600160a01b0381166103395760405162461bcd60e51b815260206004820152601c60248201527f526f79616c74794d616e616765723a207a65726f20616464726573730000000060448201526064015b60405180910390fd5b600280546001600160a01b0319166001600160a01b0383169081179091556040517f210690abd7fd6cdbb8f2beb202b2a253d58d7a0813b2175c4172c14c0c1af6dc90600090a250565b61038b610a1d565b33600090815260046020526040902054806103f85760405162461bcd60e51b815260206004820152602760248201527f526f79616c74794d616e616765723a206e6f206561726e696e677320746f20776044820152666974686472617760c81b6064820152608401610330565b3360009081526004602052604081208190556006805483929061041c908490610ac7565b9091555050604051600090339083908381818185875af1925050503d8060008114610463576040519150601f19603f3d011682016040523d82523d6000602084013e610468565b606091505b50509050806104c35760405162461bcd60e51b815260206004820152602160248201527f526f79616c74794d616e616765723a207769746864726177616c206661696c656044820152601960fa1b6064820152608401610330565b60405182815233907f48dc35af7b45e2a81fffad55f6e2fafacdb1d3d0d50d24ebdc16324f5ba757f19060200160405180910390a250506102d460018055565b61050b6109a0565b610513610a1d565b478061056d5760405162461bcd60e51b815260206004820152602360248201527f526f79616c74794d616e616765723a206e6f7468696e6720746f20776974686460448201526272617760e81b6064820152608401610330565b600080546040516001600160a01b039091169083908381818185875af1925050503d80600081146105ba576040519150601f19603f3d011682016040523d82523d6000602084013e6105bf565b606091505b50509050806106245760405162461bcd60e51b815260206004820152602b60248201527f526f79616c74794d616e616765723a20656d657267656e63792077697468647260448201526a185dd85b0819985a5b195960aa1b6064820152608401610330565b50506102d460018055565b6002546001600160a01b031633148061065257506000546001600160a01b031633145b61069e5760405162461bcd60e51b815260206004820152601e60248201527f526f79616c74794d616e616765723a206e6f7420617574686f72697a656400006044820152606401610330565b600034116106ee5760405162461bcd60e51b815260206004820152601a60248201527f526f79616c74794d616e616765723a207a65726f2076616c75650000000000006044820152606401610330565b6001600160a01b0381166107445760405162461bcd60e51b815260206004820152601d60248201527f526f79616c74794d616e616765723a207a65726f2070726f76696465720000006044820152606401610330565b600061271061075460c834610ae0565b61075e9190610af7565b9050600061076c8234610b19565b6001600160a01b038416600090815260046020526040812080549293508392909190610799908490610ac7565b9250508190555081600560008282546107b29190610ac7565b9091555050811561086e576003546040516000916001600160a01b03169084908381818185875af1925050503d806000811461080a576040519150601f19603f3d011682016040523d82523d6000602084013e61080f565b606091505b505090508061086c5760405162461bcd60e51b815260206004820152602360248201527f526f79616c74794d616e616765723a20666565207472616e73666572206661696044820152621b195960ea1b6064820152608401610330565b505b60408051828152602081018490526001600160a01b0385169186917fe3698e4763ee4becca0f71e44047f2c0018e133a8c70ab056c2ad3641fefd54a910160405180910390a350505050565b6108c26109a0565b6001600160a01b0381166109185760405162461bcd60e51b815260206004820152601c60248201527f526f79616c74794d616e616765723a207a65726f2061646472657373000000006044820152606401610330565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f7a7b5a0a132f9e0581eb8527f66eae9ee89c2a3e79d4ac7e41a1f1f4d48a7fc290600090a250565b61096a6109a0565b6001600160a01b03811661099457604051631e4fbdf760e01b815260006004820152602401610330565b61099d816109cd565b50565b6000546001600160a01b031633146102d45760405163118cdaa760e01b8152336004820152602401610330565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600260015403610a4057604051633ee5aeb560e01b815260040160405180910390fd5b6002600155565b80356001600160a01b0381168114610a5e57600080fd5b919050565b600060208284031215610a7557600080fd5b610a7e82610a47565b9392505050565b60008060408385031215610a9857600080fd5b82359150610aa860208401610a47565b90509250929050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610ada57610ada610ab1565b92915050565b8082028115828204841417610ada57610ada610ab1565b600082610b1457634e487b7160e01b600052601260045260246000fd5b500490565b81810381811115610ada57610ada610ab156fea26469706673582212205ad31f9c0aa4685e1ab31aabd3064a04b94ae4f5151ee77f0e589897f7af0d2864736f6c634300081e0033",
+  "deployedBytecode": "0x6080604052600436106100ec5760003560e01c8063abc8c7af1161008a578063e1f1c4a711610059578063e1f1c4a714610259578063e1fa8b021461026f578063e74b981b14610282578063f2fde38b146102a257600080fd5b8063abc8c7af146101f9578063b73c6ce914610219578063d3631fa51461022e578063db2e21bc1461024457600080fd5b806373ad6c2d116100c657806373ad6c2d1461016f5780637fc8f5fe1461018f57806382f1b6b1146101a55780638da5cb5b146101db57600080fd5b806346904840146100f8578063539aa77f14610135578063715018a61461015857600080fd5b366100f357005b600080fd5b34801561010457600080fd5b50600354610118906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561014157600080fd5b5061014a60c881565b60405190815260200161012c565b34801561016457600080fd5b5061016d6102c2565b005b34801561017b57600080fd5b5061016d61018a366004610a63565b6102d6565b34801561019b57600080fd5b5061014a60065481565b3480156101b157600080fd5b5061014a6101c0366004610a63565b6001600160a01b031660009081526004602052604090205490565b3480156101e757600080fd5b506000546001600160a01b0316610118565b34801561020557600080fd5b50600254610118906001600160a01b031681565b34801561022557600080fd5b5061016d610383565b34801561023a57600080fd5b5061014a60055481565b34801561025057600080fd5b5061016d610503565b34801561026557600080fd5b5061014a61271081565b61016d61027d366004610a85565b61062f565b34801561028e57600080fd5b5061016d61029d366004610a63565b6108ba565b3480156102ae57600080fd5b5061016d6102bd366004610a63565b610962565b6102ca6109a0565b6102d460006109cd565b565b6102de6109a0565b6001600160a01b0381166103395760405162461bcd60e51b815260206004820152601c60248201527f526f79616c74794d616e616765723a207a65726f20616464726573730000000060448201526064015b60405180910390fd5b600280546001600160a01b0319166001600160a01b0383169081179091556040517f210690abd7fd6cdbb8f2beb202b2a253d58d7a0813b2175c4172c14c0c1af6dc90600090a250565b61038b610a1d565b33600090815260046020526040902054806103f85760405162461bcd60e51b815260206004820152602760248201527f526f79616c74794d616e616765723a206e6f206561726e696e677320746f20776044820152666974686472617760c81b6064820152608401610330565b3360009081526004602052604081208190556006805483929061041c908490610ac7565b9091555050604051600090339083908381818185875af1925050503d8060008114610463576040519150601f19603f3d011682016040523d82523d6000602084013e610468565b606091505b50509050806104c35760405162461bcd60e51b815260206004820152602160248201527f526f79616c74794d616e616765723a207769746864726177616c206661696c656044820152601960fa1b6064820152608401610330565b60405182815233907f48dc35af7b45e2a81fffad55f6e2fafacdb1d3d0d50d24ebdc16324f5ba757f19060200160405180910390a250506102d460018055565b61050b6109a0565b610513610a1d565b478061056d5760405162461bcd60e51b815260206004820152602360248201527f526f79616c74794d616e616765723a206e6f7468696e6720746f20776974686460448201526272617760e81b6064820152608401610330565b600080546040516001600160a01b039091169083908381818185875af1925050503d80600081146105ba576040519150601f19603f3d011682016040523d82523d6000602084013e6105bf565b606091505b50509050806106245760405162461bcd60e51b815260206004820152602b60248201527f526f79616c74794d616e616765723a20656d657267656e63792077697468647260448201526a185dd85b0819985a5b195960aa1b6064820152608401610330565b50506102d460018055565b6002546001600160a01b031633148061065257506000546001600160a01b031633145b61069e5760405162461bcd60e51b815260206004820152601e60248201527f526f79616c74794d616e616765723a206e6f7420617574686f72697a656400006044820152606401610330565b600034116106ee5760405162461bcd60e51b815260206004820152601a60248201527f526f79616c74794d616e616765723a207a65726f2076616c75650000000000006044820152606401610330565b6001600160a01b0381166107445760405162461bcd60e51b815260206004820152601d60248201527f526f79616c74794d616e616765723a207a65726f2070726f76696465720000006044820152606401610330565b600061271061075460c834610ae0565b61075e9190610af7565b9050600061076c8234610b19565b6001600160a01b038416600090815260046020526040812080549293508392909190610799908490610ac7565b9250508190555081600560008282546107b29190610ac7565b9091555050811561086e576003546040516000916001600160a01b03169084908381818185875af1925050503d806000811461080a576040519150601f19603f3d011682016040523d82523d6000602084013e61080f565b606091505b505090508061086c5760405162461bcd60e51b815260206004820152602360248201527f526f79616c74794d616e616765723a20666565207472616e73666572206661696044820152621b195960ea1b6064820152608401610330565b505b60408051828152602081018490526001600160a01b0385169186917fe3698e4763ee4becca0f71e44047f2c0018e133a8c70ab056c2ad3641fefd54a910160405180910390a350505050565b6108c26109a0565b6001600160a01b0381166109185760405162461bcd60e51b815260206004820152601c60248201527f526f79616c74794d616e616765723a207a65726f2061646472657373000000006044820152606401610330565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f7a7b5a0a132f9e0581eb8527f66eae9ee89c2a3e79d4ac7e41a1f1f4d48a7fc290600090a250565b61096a6109a0565b6001600160a01b03811661099457604051631e4fbdf760e01b815260006004820152602401610330565b61099d816109cd565b50565b6000546001600160a01b031633146102d45760405163118cdaa760e01b8152336004820152602401610330565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600260015403610a4057604051633ee5aeb560e01b815260040160405180910390fd5b6002600155565b80356001600160a01b0381168114610a5e57600080fd5b919050565b600060208284031215610a7557600080fd5b610a7e82610a47565b9392505050565b60008060408385031215610a9857600080fd5b82359150610aa860208401610a47565b90509250929050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610ada57610ada610ab1565b92915050565b8082028115828204841417610ada57610ada610ab1565b600082610b1457634e487b7160e01b600052601260045260246000fd5b500490565b81810381811115610ada57610ada610ab156fea26469706673582212205ad31f9c0aa4685e1ab31aabd3064a04b94ae4f5151ee77f0e589897f7af0d2864736f6c634300081e0033",
+  "devdoc": {
+    "details": "Manages royalty distribution and earnings tracking for the AI Data Marketplace on Monad.      Handles 2% platform fee and 98% provider earnings.",
+    "errors": {
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ],
+      "ReentrancyGuardReentrantCall()": [
+        {
+          "details": "Unauthorized reentrant call."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "distribute(uint256,address)": {
+        "params": {
+          "datasetId": "Dataset purchased",
+          "provider": "Dataset owner"
+        }
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "title": "RoyaltyManager",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "distribute(uint256,address)": {
+        "notice": "Distribute incoming payment: platform fee + provider earnings"
+      },
+      "emergencyWithdraw()": {
+        "notice": "Emergency: only owner can withdraw contract balance"
+      },
+      "getPendingEarnings(address)": {
+        "notice": "Get pending earnings for a provider"
+      },
+      "setFeeRecipient(address)": {
+        "notice": "Update the fee recipient address"
+      },
+      "setMarketplace(address)": {
+        "notice": "Set the marketplace contract address"
+      },
+      "withdrawEarnings()": {
+        "notice": "Provider withdraws their accumulated earnings"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 305,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "_status",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1807,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "marketplace",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 1809,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "feeRecipient",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      },
+      {
+        "astId": 1813,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "_pendingEarnings",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 1815,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "totalPlatformFees",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1817,
+        "contract": "contracts/RoyaltyManager.sol:RoyaltyManager",
+        "label": "totalProviderPayouts",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

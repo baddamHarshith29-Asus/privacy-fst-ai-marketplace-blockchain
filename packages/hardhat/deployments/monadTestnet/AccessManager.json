@@ -1,0 +1,429 @@
+{
+  "address": "0x673a7785452781E092dA8474CA8e21c285d79094",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "AccessGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "AccessRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newMarketplace",
+          "type": "address"
+        }
+      ],
+      "name": "MarketplaceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAccessCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAccessList",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "grantAccess",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "hasAccess",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "marketplace",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "datasetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "revokeAccess",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_marketplace",
+          "type": "address"
+        }
+      ],
+      "name": "setMarketplace",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xa599681b0c496e700cfef671173d439a604569f2344970b8fcfde72454175e54",
+  "receipt": {
+    "to": null,
+    "from": "0x9477267ccfDC6dAb9B0Df72D9238F1C5F64AbcD7",
+    "contractAddress": "0x673a7785452781E092dA8474CA8e21c285d79094",
+    "transactionIndex": 1,
+    "gasUsed": "482278",
+    "logsBloom": "0x00000000000000000000000000000000000040000000000000800000000000000000000000020000000000000000000000000000010000000000000000000000000000000000000010000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000020000000000000000000000000000000000000000000000000000000010000000000",
+    "blockHash": "0x1cb64fb58e4f0b8eda3391e63dd87343d08d3983ccbf541f11eb11d54714a80d",
+    "transactionHash": "0xa599681b0c496e700cfef671173d439a604569f2344970b8fcfde72454175e54",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 15748246,
+        "transactionHash": "0xa599681b0c496e700cfef671173d439a604569f2344970b8fcfde72454175e54",
+        "address": "0x673a7785452781E092dA8474CA8e21c285d79094",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000009477267ccfdc6dab9b0df72d9238f1c5f64abcd7"
+        ],
+        "data": "0x",
+        "logIndex": 1,
+        "blockHash": "0x1cb64fb58e4f0b8eda3391e63dd87343d08d3983ccbf541f11eb11d54714a80d"
+      }
+    ],
+    "blockNumber": 15748246,
+    "cumulativeGasUsed": "482278",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "7b6a1b19683268292cda310fe0b75767",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"AccessGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"AccessRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newMarketplace\",\"type\":\"address\"}],\"name\":\"MarketplaceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"getAccessCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"}],\"name\":\"getAccessList\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"grantAccess\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"hasAccess\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketplace\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"datasetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"revokeAccess\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_marketplace\",\"type\":\"address\"}],\"name\":\"setMarketplace\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Manages dataset access control for the AI Data Marketplace on Monad.      Controls who can access encrypted datasets after purchase.\",\"errors\":{\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}]},\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"title\":\"AccessManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAccessCount(uint256)\":{\"notice\":\"Get count of users with access to a dataset\"},\"getAccessList(uint256)\":{\"notice\":\"Get all addresses with access to a dataset\"},\"grantAccess(uint256,address)\":{\"notice\":\"Grant access to a dataset for a user (called by marketplace after purchase)\"},\"hasAccess(uint256,address)\":{\"notice\":\"Check if a user has access to a dataset\"},\"revokeAccess(uint256,address)\":{\"notice\":\"Revoke access from a user (emergency use only, by owner)\"},\"setMarketplace(address)\":{\"notice\":\"Set the marketplace contract address\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/AccessManager.sol\":\"AccessManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"contracts/AccessManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.19;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\n\\r\\n/**\\r\\n * @title AccessManager\\r\\n * @dev Manages dataset access control for the AI Data Marketplace on Monad.\\r\\n *      Controls who can access encrypted datasets after purchase.\\r\\n */\\r\\ncontract AccessManager is Ownable {\\r\\n    // \\u2500\\u2500\\u2500 State \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    // datasetId => buyer => hasAccess\\r\\n    mapping(uint256 => mapping(address => bool)) private _accessGrants;\\r\\n\\r\\n    // datasetId => list of granted addresses\\r\\n    mapping(uint256 => address[]) private _accessList;\\r\\n\\r\\n    // marketplace contract address (only it can grant access)\\r\\n    address public marketplace;\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Events \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    event AccessGranted(uint256 indexed datasetId, address indexed user);\\r\\n    event AccessRevoked(uint256 indexed datasetId, address indexed user);\\r\\n    event MarketplaceUpdated(address indexed newMarketplace);\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Modifiers \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    modifier onlyMarketplace() {\\r\\n        require(msg.sender == marketplace || msg.sender == owner(), \\\"AccessManager: caller not authorized\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 Constructor \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    constructor() Ownable(msg.sender) {}\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 External Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Set the marketplace contract address\\r\\n     */\\r\\n    function setMarketplace(address _marketplace) external onlyOwner {\\r\\n        require(_marketplace != address(0), \\\"AccessManager: zero address\\\");\\r\\n        marketplace = _marketplace;\\r\\n        emit MarketplaceUpdated(_marketplace);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Grant access to a dataset for a user (called by marketplace after purchase)\\r\\n     */\\r\\n    function grantAccess(uint256 datasetId, address user) external onlyMarketplace {\\r\\n        require(user != address(0), \\\"AccessManager: zero address\\\");\\r\\n        if (!_accessGrants[datasetId][user]) {\\r\\n            _accessGrants[datasetId][user] = true;\\r\\n            _accessList[datasetId].push(user);\\r\\n            emit AccessGranted(datasetId, user);\\r\\n        }\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Revoke access from a user (emergency use only, by owner)\\r\\n     */\\r\\n    function revokeAccess(uint256 datasetId, address user) external onlyOwner {\\r\\n        require(_accessGrants[datasetId][user], \\\"AccessManager: no access to revoke\\\");\\r\\n        _accessGrants[datasetId][user] = false;\\r\\n        emit AccessRevoked(datasetId, user);\\r\\n    }\\r\\n\\r\\n    // \\u2500\\u2500\\u2500 View Functions \\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\u2500\\r\\n\\r\\n    /**\\r\\n     * @notice Check if a user has access to a dataset\\r\\n     */\\r\\n    function hasAccess(uint256 datasetId, address user) external view returns (bool) {\\r\\n        return _accessGrants[datasetId][user];\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Get count of users with access to a dataset\\r\\n     */\\r\\n    function getAccessCount(uint256 datasetId) external view returns (uint256) {\\r\\n        return _accessList[datasetId].length;\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @notice Get all addresses with access to a dataset\\r\\n     */\\r\\n    function getAccessList(uint256 datasetId) external view returns (address[] memory) {\\r\\n        return _accessList[datasetId];\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x584487ea54cbb5e044377f561851c492aa77fc075da7b6343f2a24c7f61598bb\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b503380603557604051631e4fbdf760e01b81526000600482015260240160405180910390fd5b603c816041565b506091565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b610718806100a06000396000f3fe608060405234801561001057600080fd5b506004361061009e5760003560e01c8063abc8c7af11610066578063abc8c7af1461012b578063ced141981461013e578063d9a5ec1b14610187578063f2fde38b1461019a578063f31bb177146101ad57600080fd5b806358f35551146100a357806365dd152c146100d6578063715018a6146100eb57806373ad6c2d146100f35780638da5cb5b14610106575b600080fd5b6100c36100b1366004610613565b60009081526002602052604090205490565b6040519081526020015b60405180910390f35b6100e96100e4366004610648565b6101cd565b005b6100e9610353565b6100e9610101366004610674565b610367565b6000546001600160a01b03165b6040516001600160a01b0390911681526020016100cd565b600354610113906001600160a01b031681565b61017761014c366004610648565b60009182526001602090815260408084206001600160a01b0393909316845291905290205460ff1690565b60405190151581526020016100cd565b6100e9610195366004610648565b61040f565b6100e96101a8366004610674565b6104ec565b6101c06101bb366004610613565b61052a565b6040516100cd9190610696565b6003546001600160a01b03163314806101f057506000546001600160a01b031633145b61024d5760405162461bcd60e51b8152602060048201526024808201527f4163636573734d616e616765723a2063616c6c6572206e6f7420617574686f726044820152631a5e995960e21b60648201526084015b60405180910390fd5b6001600160a01b0381166102a35760405162461bcd60e51b815260206004820152601b60248201527f4163636573734d616e616765723a207a65726f206164647265737300000000006044820152606401610244565b60008281526001602090815260408083206001600160a01b038516845290915290205460ff1661034f5760008281526001602081815260408084206001600160a01b038616808652908352818520805460ff1916851790558685526002835281852080549485018155855291842090920180546001600160a01b031916821790559051909184917f3c3a9147a1fc73dd51a32f4d10c43d457e8cb826eb6f35cac6349eb965ba82b49190a35b5050565b61035b610596565b61036560006105c3565b565b61036f610596565b6001600160a01b0381166103c55760405162461bcd60e51b815260206004820152601b60248201527f4163636573734d616e616765723a207a65726f206164647265737300000000006044820152606401610244565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f210690abd7fd6cdbb8f2beb202b2a253d58d7a0813b2175c4172c14c0c1af6dc90600090a250565b610417610596565b60008281526001602090815260408083206001600160a01b038516845290915290205460ff166104945760405162461bcd60e51b815260206004820152602260248201527f4163636573734d616e616765723a206e6f2061636365737320746f207265766f6044820152616b6560f01b6064820152608401610244565b60008281526001602090815260408083206001600160a01b0385168085529252808320805460ff1916905551909184917f125883b94692baebecad9f111ed97ffa626523bbbadc6b0ef85ee1b56b9e52d59190a35050565b6104f4610596565b6001600160a01b03811661051e57604051631e4fbdf760e01b815260006004820152602401610244565b610527816105c3565b50565b60008181526002602090815260409182902080548351818402810184019094528084526060939283018282801561058a57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161056c575b50505050509050919050565b6000546001600160a01b031633146103655760405163118cdaa760e01b8152336004820152602401610244565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60006020828403121561062557600080fd5b5035919050565b80356001600160a01b038116811461064357600080fd5b919050565b6000806040838503121561065b57600080fd5b8235915061066b6020840161062c565b90509250929050565b60006020828403121561068657600080fd5b61068f8261062c565b9392505050565b602080825282518282018190526000918401906040840190835b818110156106d75783516001600160a01b03168352602093840193909201916001016106b0565b50909594505050505056fea26469706673582212200a52a315292c43373d6d8ac0ede99e5af6fb3a57d1bb53b271f54d68e7c1a03364736f6c634300081e0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061009e5760003560e01c8063abc8c7af11610066578063abc8c7af1461012b578063ced141981461013e578063d9a5ec1b14610187578063f2fde38b1461019a578063f31bb177146101ad57600080fd5b806358f35551146100a357806365dd152c146100d6578063715018a6146100eb57806373ad6c2d146100f35780638da5cb5b14610106575b600080fd5b6100c36100b1366004610613565b60009081526002602052604090205490565b6040519081526020015b60405180910390f35b6100e96100e4366004610648565b6101cd565b005b6100e9610353565b6100e9610101366004610674565b610367565b6000546001600160a01b03165b6040516001600160a01b0390911681526020016100cd565b600354610113906001600160a01b031681565b61017761014c366004610648565b60009182526001602090815260408084206001600160a01b0393909316845291905290205460ff1690565b60405190151581526020016100cd565b6100e9610195366004610648565b61040f565b6100e96101a8366004610674565b6104ec565b6101c06101bb366004610613565b61052a565b6040516100cd9190610696565b6003546001600160a01b03163314806101f057506000546001600160a01b031633145b61024d5760405162461bcd60e51b8152602060048201526024808201527f4163636573734d616e616765723a2063616c6c6572206e6f7420617574686f726044820152631a5e995960e21b60648201526084015b60405180910390fd5b6001600160a01b0381166102a35760405162461bcd60e51b815260206004820152601b60248201527f4163636573734d616e616765723a207a65726f206164647265737300000000006044820152606401610244565b60008281526001602090815260408083206001600160a01b038516845290915290205460ff1661034f5760008281526001602081815260408084206001600160a01b038616808652908352818520805460ff1916851790558685526002835281852080549485018155855291842090920180546001600160a01b031916821790559051909184917f3c3a9147a1fc73dd51a32f4d10c43d457e8cb826eb6f35cac6349eb965ba82b49190a35b5050565b61035b610596565b61036560006105c3565b565b61036f610596565b6001600160a01b0381166103c55760405162461bcd60e51b815260206004820152601b60248201527f4163636573734d616e616765723a207a65726f206164647265737300000000006044820152606401610244565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f210690abd7fd6cdbb8f2beb202b2a253d58d7a0813b2175c4172c14c0c1af6dc90600090a250565b610417610596565b60008281526001602090815260408083206001600160a01b038516845290915290205460ff166104945760405162461bcd60e51b815260206004820152602260248201527f4163636573734d616e616765723a206e6f2061636365737320746f207265766f6044820152616b6560f01b6064820152608401610244565b60008281526001602090815260408083206001600160a01b0385168085529252808320805460ff1916905551909184917f125883b94692baebecad9f111ed97ffa626523bbbadc6b0ef85ee1b56b9e52d59190a35050565b6104f4610596565b6001600160a01b03811661051e57604051631e4fbdf760e01b815260006004820152602401610244565b610527816105c3565b50565b60008181526002602090815260409182902080548351818402810184019094528084526060939283018282801561058a57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161056c575b50505050509050919050565b6000546001600160a01b031633146103655760405163118cdaa760e01b8152336004820152602401610244565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60006020828403121561062557600080fd5b5035919050565b80356001600160a01b038116811461064357600080fd5b919050565b6000806040838503121561065b57600080fd5b8235915061066b6020840161062c565b90509250929050565b60006020828403121561068657600080fd5b61068f8261062c565b9392505050565b602080825282518282018190526000918401906040840190835b818110156106d75783516001600160a01b03168352602093840193909201916001016106b0565b50909594505050505056fea26469706673582212200a52a315292c43373d6d8ac0ede99e5af6fb3a57d1bb53b271f54d68e7c1a03364736f6c634300081e0033",
+  "devdoc": {
+    "details": "Manages dataset access control for the AI Data Marketplace on Monad.      Controls who can access encrypted datasets after purchase.",
+    "errors": {
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "title": "AccessManager",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getAccessCount(uint256)": {
+        "notice": "Get count of users with access to a dataset"
+      },
+      "getAccessList(uint256)": {
+        "notice": "Get all addresses with access to a dataset"
+      },
+      "grantAccess(uint256,address)": {
+        "notice": "Grant access to a dataset for a user (called by marketplace after purchase)"
+      },
+      "hasAccess(uint256,address)": {
+        "notice": "Check if a user has access to a dataset"
+      },
+      "revokeAccess(uint256,address)": {
+        "notice": "Revoke access from a user (emergency use only, by owner)"
+      },
+      "setMarketplace(address)": {
+        "notice": "Set the marketplace contract address"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/AccessManager.sol:AccessManager",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1223,
+        "contract": "contracts/AccessManager.sol:AccessManager",
+        "label": "_accessGrants",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_mapping(t_address,t_bool))"
+      },
+      {
+        "astId": 1228,
+        "contract": "contracts/AccessManager.sol:AccessManager",
+        "label": "_accessList",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_array(t_address)dyn_storage)"
+      },
+      {
+        "astId": 1230,
+        "contract": "contracts/AccessManager.sol:AccessManager",
+        "label": "marketplace",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_uint256,t_array(t_address)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => address[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_address)dyn_storage"
+      },
+      "t_mapping(t_uint256,t_mapping(t_address,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => mapping(address => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_bool)"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

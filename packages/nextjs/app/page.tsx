@@ -1,81 +1,73 @@
 "use client";
 
 import Link from "next/link";
-import { Address } from "@scaffold-ui/components";
-import type { NextPage } from "next";
-import { hardhat } from "viem/chains";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { BanknotesIcon, CircleStackIcon, CommandLineIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 
-const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-  const { targetNetwork } = useTargetNetwork();
-
+export default function Home() {
   return (
     <>
-      <div className="flex items-center flex-col grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address
-              address={connectedAddress}
-              chain={targetNetwork}
-              blockExplorerAddressLink={
-                targetNetwork.id === hardhat.id ? `/blockexplorer/address/${connectedAddress}` : undefined
-              }
-            />
-          </div>
+      <div className="flex items-center flex-col grow pt-10 px-4">
+        {/* Hero Section */}
+        <div className="text-center max-w-4xl mx-auto mb-16 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] -z-10 animate-pulse-fast pointer-events-none"></div>
 
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+            The Data <span className="text-primary underline decoration-wavy decoration-secondary">Economy</span> <br />
+            for Decentralized AI
+          </h1>
+
+          <p className="text-xl md:text-2xl text-base-content/80 mb-10 max-w-2xl mx-auto font-light">
+            Buy, sell, and train on encrypted datasets via Monad. Zero reliance on centralized clouds. 100% on-chain
+            attribution.
           </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/marketplace"
+              className="btn btn-primary btn-lg rounded-full shadow-lg shadow-primary/30 w-full sm:w-auto px-10"
+            >
+              Explore Datasets
+            </Link>
+            <Link href="/upload" className="btn btn-outline btn-lg rounded-full w-full sm:w-auto px-10 bg-base-100">
+              Upload & Earn
+            </Link>
+          </div>
         </div>
 
-        <div className="grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col md:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-          </div>
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl mx-auto px-4 pb-20 mt-10">
+          <FeatureCard
+            icon={<LockClosedIcon className="w-10 h-10 text-primary" />}
+            title="Encrypted Storage"
+            desc="Datasets are encrypted locally and stored on IPFS. Keys are decentralized."
+          />
+          <FeatureCard
+            icon={<CommandLineIcon className="w-10 h-10 text-secondary" />}
+            title="Monad Performance"
+            desc="10k TPS execution means instant access grants and proof submissions."
+          />
+          <FeatureCard
+            icon={<CircleStackIcon className="w-10 h-10 text-accent" />}
+            title="Federated Learning"
+            desc="Train models locally and submit zero-knowledge proofs on-chain."
+          />
+          <FeatureCard
+            icon={<BanknotesIcon className="w-10 h-10 text-success" />}
+            title="Fair Royalties"
+            desc="Providers earn 98% of all sales. Smart contract splits are automated."
+          />
         </div>
       </div>
     </>
   );
-};
+}
 
-export default Home;
+const FeatureCard = ({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) => (
+  <div className="card bg-base-100 shadow-xl border border-base-200 hover:-translate-y-2 transition-transform duration-300">
+    <div className="card-body items-center text-center">
+      <div className="mb-4 bg-base-200 p-4 rounded-full">{icon}</div>
+      <h3 className="card-title text-xl mb-2">{title}</h3>
+      <p className="text-base-content/70">{desc}</p>
+    </div>
+  </div>
+);

@@ -11,12 +11,25 @@ export type BaseConfig = {
 
 export type ScaffoldConfig = BaseConfig;
 
+const monadTestnet = {
+  id: 10143,
+  name: "Monad Testnet",
+  nativeCurrency: { name: "MON", symbol: "MON", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://testnet-rpc.monad.xyz"] },
+    public: { http: ["https://testnet-rpc.monad.xyz"] },
+  },
+  blockExplorers: {
+    default: { name: "Monad Explorer", url: "https://testnet.monadexplorer.com" },
+  },
+} as const satisfies chains.Chain;
+
 export const DEFAULT_ALCHEMY_API_KEY = "cR4WnXePioePZ5fFrnSiR";
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [chains.hardhat],
-  // The interval at which your front-end polls the RPC servers for new data (it has no effect if you only target the local network (default is 4000))
+  targetNetworks: [monadTestnet, chains.hardhat],
+  // The interval at which your front-end polls the RPC servers for new data
   pollingInterval: 3000,
   // This is ours Alchemy's default API key.
   // You can get your own at https://dashboard.alchemyapi.io

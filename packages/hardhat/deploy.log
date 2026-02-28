@@ -1,0 +1,31 @@
+﻿Nothing to compile
+No need to generate any newer typings.
+reusing "YourContract" at 0xa513E6E4b8f2a923D98304ec87F64353C4D5C853
+≡ƒæï Initial greeting: Building Unstoppable Apps!!!
+reusing "Reputation" at 0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6
+reusing "Staking" at 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
+reusing "Escrow" at 0x610178dA211FEF7D417bC0e6FeD39F05609AD788
+Deployed contracts: {
+  Reputation: '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6',
+  Staking: '0x8A791620dd6260079BF849Dc5567aDC3F2FdC318',
+  Escrow: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788'
+}
+
+≡ƒºá Deploying AI Data Marketplace to Monad...
+≡ƒôì Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+≡ƒîÉ Network: localhost
+
+[1/3] Deploying AccessManager...
+reusing "AccessManager" at 0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e
+Γ£à AccessManager deployed at: 0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e
+
+[2/3] Deploying RoyaltyManager...
+reusing "RoyaltyManager" at 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0
+Γ£à RoyaltyManager deployed at: 0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0
+
+[3/3] Deploying AIDataMarketplace...
+reusing "AIDataMarketplace" at 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82
+Γ£à AIDataMarketplace deployed at: 0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82
+
+≡ƒöù Wiring up contracts...
+

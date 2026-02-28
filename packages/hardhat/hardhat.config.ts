@@ -18,7 +18,9 @@ const providerApiKey = process.env.ALCHEMY_API_KEY || "cR4WnXePioePZ5fFrnSiR";
 // If not set, it uses the hardhat account 0 private key.
 // You can generate a random account with `yarn generate` or `yarn account:import` to import your existing PK
 const deployerPrivateKey =
-  process.env.__RUNTIME_DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+  process.env.__RUNTIME_DEPLOYER_PRIVATE_KEY ??
+  process.env.DEPLOYER_PRIVATE_KEY ??
+  "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 // If not set, it uses our block explorers default API keys.
 const etherscanApiKey = process.env.ETHERSCAN_V2_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
 
@@ -42,6 +44,7 @@ const config: HardhatUserConfig = {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
       default: 0,
+      monadTestnet: deployerPrivateKey,
     },
   },
   networks: {
@@ -125,10 +128,43 @@ const config: HardhatUserConfig = {
       url: "https://forno.celo-sepolia.celo-testnet.org/",
       accounts: [deployerPrivateKey],
     },
+    // ─── Monad Networks ───────────────────────────────────────────────────────
+    monadTestnet: {
+      url: process.env.MONAD_TESTNET_RPC_URL || "https://testnet-rpc.monad.xyz/",
+      accounts: [deployerPrivateKey],
+      chainId: 10143,
+    },
+    monad: {
+      url: process.env.MONAD_MAINNET_RPC_URL || "https://rpc.monad.xyz",
+      accounts: [deployerPrivateKey],
+      chainId: 41454,
+    },
   },
   // Configuration for harhdat-verify plugin
   etherscan: {
-    apiKey: etherscanApiKey,
+    apiKey: {
+      ...({ etherscanApiKey } as unknown as Record<string, string>),
+      monadTestnet: "no-api-key-needed",
+      monad: "no-api-key-needed",
+    },
+    customChains: [
+      {
+        network: "monadTestnet",
+        chainId: 10143,
+        urls: {
+          apiURL: "https://testnet.monadexplorer.com/api",
+          browserURL: "https://testnet.monadexplorer.com",
+        },
+      },
+      {
+        network: "monad",
+        chainId: 41454,
+        urls: {
+          apiURL: "https://monadexplorer.com/api",
+          browserURL: "https://monadexplorer.com",
+        },
+      },
+    ],
   },
   // Configuration for etherscan-verify from hardhat-deploy plugin
   verify: {

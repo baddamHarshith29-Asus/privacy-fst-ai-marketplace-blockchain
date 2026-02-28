@@ -1,83 +1,84 @@
-# 🏗 Scaffold-ETH 2
+# 🧠 Monad AI Data Marketplace
 
 <h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
+  <b>Decentralized, Privacy-Preserving AI Training on Monad</b>
 </h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+<p align="center">
+  <img src="https://img.shields.io/badge/Blockchain-Monad-6347FF?style=for-the-badge" alt="Monad">
+  <img src="https://img.shields.io/badge/Language-Solidity-363636?style=for-the-badge&logo=solidity" alt="Solidity">
+  <img src="https://img.shields.io/badge/Frontend-Next.js%2015-000000?style=for-the-badge&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwind-css" alt="Tailwind">
+</p>
 
-> [!NOTE]
-> 🤖 Scaffold-ETH 2 is AI-ready! It has everything agents need to build on Ethereum. Check `.agents/`, `.claude/`, `.opencode` or `.cursor/` for more info.
+---
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+## 🌟 Vision
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+A decentralized marketplace where data providers monetize encrypted AI datasets, and AI developers purchase access to train models securely. Powered by **Monad's high-performance L1**, this platform ensures lightning-fast transactions, low fees, and cryptographically verifiable AI training sessions.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## 🚀 Key Features
 
-## Requirements
+- ⚡ **High-Performance L1**: Built on Monad, capable of 10,000+ TPS with parallel execution.
+- 🔐 **Privacy-First Storage**: Datasets are encrypted locally and stored on IPFS. Only CIDs and key hashes are stored on-chain.
+- 💸 **Fair Royalties**: Automated distribution—98% to data providers and 2% platform fee.
+- 🧪 **Federated Learning Lab**: Simulate off-chain model training and submit on-chain proofs of completion.
+- 📊 **Real-time Analytics**: Platform-wide stats including volume, transaction count, and active datasets.
 
-Before you begin, you need to install the following tools:
+## 🏗 System Architecture
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+The marketplace consists of three core smart contracts:
 
-## Quickstart
+1.  **`AIDataMarketplace.sol`**: The main entry point for dataset registration, purchases, and training proofs.
+2.  **`AccessManager.sol`**: Handles post-purchase access control logic.
+3.  **`RoyaltyManager.sol`**: Manages fee distribution and secure provider withdrawals.
 
-To get started with Scaffold-ETH 2, follow the steps below:
+## 🛠 Tech Stack
 
-1. Install dependencies if it was skipped in CLI:
+- **L1 Blockchain**: Monad (Testnet)
+- **Smart Contracts**: Solidity 0.8.30 + Hardhat
+- **Frontend**: Next.js 15 + Tailwind CSS + DaisyUI
+- **Web3 Tools**: Scaffold-ETH 2 + Wagmi + Viem + RainbowKit
+- **Storage**: IPFS (Simulated/Ready for Pinata)
 
+---
+
+## 🏃‍♂️ Quickstart
+
+### 1. Requirements
+- Node.js >= 20.18.3
+- Yarn
+- Git
+- MetaMask (connected to Monad Testnet)
+
+### 2. Setup Environment
+Go to `packages/hardhat` and create a `.env` file:
+```env
+DEPLOYER_PRIVATE_KEY="YOUR_PRIVATE_KEY"
 ```
-cd my-dapp-example
+
+### 3. Install & Start
+```bash
+# 1. Install dependencies
 yarn install
-```
 
-2. Run a local network in the first terminal:
-
-```
+# 2. Start local chain (optional for local testing)
 yarn chain
-```
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
+# 3. Deploy to Monad Testnet
+yarn deploy --network monadTestnet
 
-3. On a second terminal, deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
+# 4. Start the frontend
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+## 🧪 Testing the Loop
 
-Run smart contract test with `yarn hardhat:test`
+1. **Upload**: Visit `/upload` to encrypt and publish a dataset to Monad.
+2. **Browse**: Check `/marketplace` to see all active datasets.
+3. **Dashboard**: Manage your earnings and withdrawals at `/dashboard`.
+4. **Train**: Run a simulation at `/ai-training` to submit a "Proof of Training" to the blockchain.
 
-- Edit your smart contracts in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
+---
 
-
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+Built with ❤️ for the Monad Ecosystem.
